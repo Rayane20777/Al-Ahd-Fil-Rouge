@@ -4,13 +4,21 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Interfaces\ProfessionRepositoryInterface;
+use App\Services\Interfaces\ProfessionServiceInterface;
 use App\Repositories\Interfaces\EventRepositoryInterface;
+use App\Services\Interfaces\EventServiceInterface;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
+use App\Services\Interfaces\AppointmentServiceInterface;
 use App\Repositories\Interfaces\ParamedicalServiceRepositoryInterface;
+use App\Services\Interfaces\ParamedicalServiceServiceInterface;
 use App\Repositories\ProfessionRepository;
+use App\Services\ProfessionService;
 use App\Repositories\EventRepository;
+use App\Services\EventService;
 use App\Repositories\AppointmentRepository;
+use App\Services\AppointmentService;
 use App\Repositories\ParamedicalServiceRepository;
+use App\Services\ParamedicalServiceService;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 
@@ -22,9 +30,14 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(ProfessionRepositoryInterface::class, ProfessionRepository::class);   
+        $this->app->bind(ProfessionServiceInterface::class, ProfessionService::class);   
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);   
+        $this->app->bind(EventServiceInterface::class, EventService::class);   
         $this->app->bind(AppointmentRepositoryInterface::class, AppointmentRepository::class);   
-        $this->app->bind(ParamedicalServiceRepositoryInterface::class, ParamedicalServiceRepository::class);   
+        $this->app->bind(AppointmentServiceInterface::class, AppointmentService::class);   
+        $this->app->bind(ParamedicalServiceRepositoryInterface::class, ParamedicalServiceRepository::class);
+        $this->app->bind(ParamedicalServiceServiceInterface::class, ParamedicalServiceService::class);   
+
      }
 
     /**

@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\EventRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
+use App\Services\Interfaces\EventServiceInterface;
+use Exception;
 
 class EventController extends Controller
 {
-    private $eventRepository;
+    private $service;
 
-    public function __construct(EventRepositoryInterface $eventRepository){
-        $this->eventRepository = $eventRepository;
+    public function __construct(EventServiceInterface $service){
+        $this->service = $service;
 
     }
     /*
@@ -23,7 +24,7 @@ class EventController extends Controller
 
     public function index()
     {
-        $events = $this->eventRepository->allEvent();
+        $events = $this->service->allEvent();
         return response()->json($events,201);
 
     }
@@ -32,23 +33,39 @@ class EventController extends Controller
     {
         $data = $request->validated();
 
-        $this->eventRepository->storeEvent($data);
+        try {
+            $data = $this->service->storeEvent($data);
+        } catch (Exception $e){
+            return $this->responseError($e->getMessage());
+        }
+
+        
 
         return response()->json($data,201);
     }
 
     public function update(EventRequest $request, $id)
     {
+        try{
+            $this->service->updateEvent($request->all(), $id);
+
+        }catch(Exception $e){
+            return $this->responseError($e->getMessage()); 
+
+        }
       
-        $this->eventRepository->updateEvent($request->all(), $id);
 
         return response()->json($request,201);
     }
 
     public function destroy($id)
     {
-        $this->eventRepository->destroyEvent($id);
+        try{
+            $this->service->destroyEvent($id);
 
+        }catch(Exception $e){
+            return $this->responseError($e->getMessage()); 
+        }
         return response()->json('deleted');
     }
 

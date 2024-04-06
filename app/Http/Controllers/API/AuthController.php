@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterMemberRequest;
 use App\Http\Requests\RegisterDoctorRequest;
+
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

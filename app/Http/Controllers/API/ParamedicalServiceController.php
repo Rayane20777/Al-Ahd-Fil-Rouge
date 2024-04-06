@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\ParamedicalServiceRepositoryInterface;
+use App\Services\Interfaces\ParamedicalServiceServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\ParamedicalServiceRequest;
+use Exception;
 
 class ParamedicalServiceController extends Controller
 {
-    private $paramedicalServiceRepository;
+    private $service;
 
-    public function __construct(ParamedicalServiceRepositoryInterface $paramedicalServiceRepository){
-        $this->paramedicalServiceRepository = $paramedicalServiceRepository;
+    public function __construct(ParamedicalServiceServiceInterface $service){
+        $this->service = $service;
 
     }
     /*
@@ -23,8 +24,8 @@ class ParamedicalServiceController extends Controller
 
     public function index()
     {
-        $paramedicalServices = $this->paramedicalServiceRepository->allParamedicalService();
-        return response()->json($paramedicalServices,201);
+        $service = $this->service->allParamedicalService();
+        return response()->json($service,201);
 
     }
 
@@ -32,23 +33,38 @@ class ParamedicalServiceController extends Controller
     {
         $data = $request->validated();
 
-        $this->paramedicalServiceRepository->storeParamedicalService($data);
+
+
+        try {
+            $data = $this->service->storeParamedicalService($data);
+        } catch (Exception $e){
+            return $this->responseError($e->getMessage());
+        }
 
         return response()->json($data,201);
     }
 
     public function update(ParamedicalServiceRequest $request, $id)
     {
-      
-        $this->paramedicalServiceRepository->updateParamedicalService($request->all(), $id);
+      try{
+        $this->service->updateParamedicalService($request->all(), $id);
+
+      }catch(Exception $e){
+        return $this->responseError($e->getMessage()); 
+
+      }
 
         return response()->json($request,201);
     }
 
     public function destroy($id)
     {
-        $this->paramedicalServiceRepository->destroyParamedicalService($id);
+        try{
+            $this->service->destroyParamedicalService($id);
 
+        }catch(Exception $e){
+            return $this->responseError($e->getMessage()); 
+        }
         return response()->json('deleted');
     }
 }

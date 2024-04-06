@@ -4,17 +4,19 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Repositories\Interfaces\AppointmentRepositoryInterface;
+use App\Services\Interfaces\AppointmentServiceInterface;
 use App\Http\Requests\AppointmentRequest;
 use Illuminate\Support\Facades\Auth;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
+use Exception;
+
 
 class AppointmentController extends Controller
 {
-    private $appointmentRepository;
+    private $service;
 
-    public function __construct(AppointmentRepositoryInterface $appointmentRepository){
-        $this->appointmentRepository = $appointmentRepository;
+    public function __construct(AppointmentServiceInterface $service){
+        $this->service = $service;
 
     }
     /*
@@ -25,42 +27,54 @@ class AppointmentController extends Controller
 
     public function index()
     {
-        $appointments = $this->appointmentRepository->allAppointment();
-        return response()->json($appointments,201);
+        $service = $this->service->allAppointment();
+        return response()->json($service,201);
 
     }
 
     public function store(AppointmentRequest $request)
     {
+        
         $data = $request->validated();
 
-        $this->appointmentRepository->storeAppointment($data);
+        try {
+            $data = $this->service->storeappointment($data);
+        } catch (Exception $e){
+            return $this->responseError($e->getMessage());
+        }
+
 
         return response()->json($data,201);
     }
 
     public function update(AppointmentRequest $request, $id)
     {
-      
-        $this->appointmentRepository->updateAppointment($request->all(), $id);
-
+      try{
+        $this->service->updateAppointment($request->all(), $id);
+    }catch(Exception $e){
+        return $this->responseError($e->getMessage()); 
+    }
         return response()->json($request,201);
     }
 
     public function destroy($id)
-    {
-        $this->appointmentRepository->destroyAppointment($id);
+    { 
+        try{
+            $this->service->destroyAppointment($id);
 
+        }catch(Exception $e){
+            return $this->responseError($e->getMessage()); 
+        }
         return response()->json('deleted');
     }
 
-    public function makeAppointment(Request $request, $id)
-    {
-        $user = JWTAuth::user();
+    // public function makeAppointment(Request $request, $id)
+    // {
+    //     $user = JWTAuth::user();
         
-        $member_id = $user->member()->first()->id;
+    //     $member_id = $user->member()->first()->id;
 
-        $this->appointmentRepository->makeAppointment($id,$member_id);
-        return response()->json('reserved succesfuly');
-    }
+    //     $this->appointmentRepository->makeAppointment($id,$member_id);
+    //     return response()->json('reserved succesfuly');
+    // }
 }
