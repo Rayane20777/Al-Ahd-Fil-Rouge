@@ -4,8 +4,8 @@
 namespace App\Repositories;
 
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
-use App\Models\Appointment;
 use App\Models\AppointmentReservation;
+use App\Models\Appointment;
 
 class AppointmentRepository implements AppointmentRepositoryInterface
 {
@@ -44,11 +44,28 @@ class AppointmentRepository implements AppointmentRepositoryInterface
 
     public function makeAppointment($id,$member_id)
     {
+
         
         return AppointmentReservation::create([
         'appointment_id' => $id,
         'member_id' => $member_id,
             ]
         );
+    }
+
+    public function approveAppointment($id)
+    {
+        $appointment = AppointmentReservation::find($id);
+        $appointment->status = 'approved';
+        $appointment->save();
+        
+    }
+
+    public function denyAppointment($id)
+    {
+        $appointment = AppointmentReservation::find($id);
+        $appointment->status = 'denied';
+        $appointment->save();
+        
     }
 }

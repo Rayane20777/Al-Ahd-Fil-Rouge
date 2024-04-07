@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('appointment_reservations', function (Blueprint $table) {
             $table->id();
+            $table->enum('status', ['pending','approved','denied']);
             $table->foreignId('member_id')->constrained('members')->onDelete('cascade');
             $table->foreignId('appointment_id')->constrained('appointments')->onDelete('cascade');
             $table->softDeletes();

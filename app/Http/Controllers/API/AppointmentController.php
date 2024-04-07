@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Services\Interfaces\AppointmentServiceInterface;
 use App\Http\Requests\AppointmentRequest;
 use Illuminate\Support\Facades\Auth;
-use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 use Exception;
 
 
@@ -68,13 +67,23 @@ class AppointmentController extends Controller
         return response()->json('deleted');
     }
 
-    // public function makeAppointment(Request $request, $id)
-    // {
-    //     $user = JWTAuth::user();
+    public function makeAppointment(Request $request,$id)
+    {
         
-    //     $member_id = $user->member()->first()->id;
+        $this->service->makeAppointment($id);
 
-    //     $this->appointmentRepository->makeAppointment($id,$member_id);
-    //     return response()->json('reserved succesfuly');
-    // }
+        return response()->json('reserved succesfuly');
+    }
+
+    public function approveAppointment(Request $request , $id){
+        $this->service->approveAppointment($id);
+
+        return response()->json('approved succesfully');
+    }
+
+    public function denyAppointment(Request $request , $id){
+        $this->service->denyAppointment($id);
+
+        return response()->json('denied succesfully');
+    }
 }

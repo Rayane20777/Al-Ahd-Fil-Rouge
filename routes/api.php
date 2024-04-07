@@ -56,6 +56,8 @@ Route::controller(AppointmentController::class)->group(function () {
     Route::post('/appointment/update/{id}', 'update');
     Route::post('/appointment/destroy/{id}', 'destroy');
     Route::post('/appointment/make/{id}', 'makeAppointment');
+    Route::post('/appointment/approve/{id}', 'approveAppointment');
+    Route::post('/appointment/deny/{id}', 'denyAppointment');
 });
 
 

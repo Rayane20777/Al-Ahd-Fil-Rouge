@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 use App\Services\Interfaces\AppointmentServiceInterface;
 use App\Traits\ResponseTrait;
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 
 class AppointmentService implements AppointmentServiceInterface
@@ -39,8 +40,26 @@ class AppointmentService implements AppointmentServiceInterface
         $this->repository->destroyAppointment($id);
 
     }
-    public function makeAppointment($id,$member_id)
+    public function makeAppointment($id)
     {
+
+        $user = JWTAuth::user();
+
+        $member_id = $user->member()->first()->id;
+
+        $this->repository->makeAppointment($id, $member_id);
+
+    }
+     
+    public function approveAppointment($id){
+
+        $this->repository->approveAppointment($id);
+
+    }
+
+    public function denyAppointment($id){
+        
+        $this->repository->denyAppointment($id);
 
     }
     

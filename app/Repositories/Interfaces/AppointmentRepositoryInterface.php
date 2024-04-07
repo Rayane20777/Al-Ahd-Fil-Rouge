@@ -9,5 +9,7 @@ Interface AppointmentRepositoryInterface{
     public function updateAppointment($data, $id); 
     public function destroyAppointment($id);
     public function makeAppointment($id,$member_id);
+    public function approveAppointment($id);
+    public function denyAppointment($id);
 }
 

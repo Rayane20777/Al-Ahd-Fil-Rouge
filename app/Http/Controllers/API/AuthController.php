@@ -102,7 +102,7 @@ class AuthController extends Controller
             'token' => $token,
             'type' => 'bearer',
         ],
-        'redirect_to' => $redirectRoute, // Include the redirect route in the response
+        'redirect_to' => $redirectRoute,
     ]);
 }
 

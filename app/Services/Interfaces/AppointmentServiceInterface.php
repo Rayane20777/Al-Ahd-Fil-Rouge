@@ -10,5 +10,7 @@ interface AppointmentServiceInterface
     public function findAppointment($id);
     public function updateAppointment($data, $id); 
     public function destroyAppointment($id);
-    public function makeAppointment($id,$member_id);
+    public function makeAppointment($id);
+    public function approveAppointment($id);
+    public function denyAppointment($id);
 }
