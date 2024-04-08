@@ -9,6 +9,8 @@ use App\Repositories\Interfaces\EventRepositoryInterface;
 use App\Services\Interfaces\EventServiceInterface;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 use App\Services\Interfaces\AppointmentServiceInterface;
+use App\Services\Interfaces\SessionServiceInterface;
+use App\Repositories\Interfaces\SessionRepositoryInterface;
 use App\Repositories\Interfaces\ParamedicalServiceRepositoryInterface;
 use App\Services\Interfaces\ParamedicalServiceServiceInterface;
 use App\Repositories\ProfessionRepository;
@@ -17,6 +19,8 @@ use App\Repositories\EventRepository;
 use App\Services\EventService;
 use App\Repositories\AppointmentRepository;
 use App\Services\AppointmentService;
+use App\Services\SessionService;
+use App\Repositories\SessionRepository;
 use App\Repositories\ParamedicalServiceRepository;
 use App\Services\ParamedicalServiceService;
 use Illuminate\Support\Facades\Gate;
@@ -31,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ProfessionRepositoryInterface::class, ProfessionRepository::class);   
         $this->app->bind(ProfessionServiceInterface::class, ProfessionService::class);   
+        $this->app->bind(SessionServiceInterface::class, SessionService::class);   
+        $this->app->bind(SessionRepositoryInterface::class, SessionRepository::class);   
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);   
         $this->app->bind(EventServiceInterface::class, EventService::class);   
         $this->app->bind(AppointmentRepositoryInterface::class, AppointmentRepository::class);   

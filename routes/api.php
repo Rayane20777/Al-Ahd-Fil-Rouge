@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProfessionController;
 use App\Http\Controllers\API\EventController;
+use App\Http\Controllers\API\SessionController;
 use App\Http\Controllers\API\AppointmentController;
 use App\Http\Controllers\API\ParamedicalServiceController;
 
@@ -66,4 +67,13 @@ Route::controller(ParamedicalServiceController::class)->group(function () {
     Route::post('/paramedical_service/store', 'store');
     Route::post('/paramedical_service/update/{id}', 'update');
     Route::post('/paramedical_service/destroy/{id}', 'destroy');
+});
+
+
+Route::controller(SessionController::class)->group(function () {
+    Route::post('/session/index', 'index');
+    Route::post('/session/store', 'store');
+    Route::post('/session/update/{id}', 'update');
+    Route::post('/session/destroy/{id}', 'destroy');
+    Route::post('/session/make/{id}', 'makeSession');
 });

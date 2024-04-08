@@ -6,12 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Interfaces\AppointmentServiceInterface;
 use App\Http\Requests\AppointmentRequest;
-use Illuminate\Support\Facades\Auth;
 use Exception;
 
 
 class AppointmentController extends Controller
-{
+{ 
     private $service;
 
     public function __construct(AppointmentServiceInterface $service){

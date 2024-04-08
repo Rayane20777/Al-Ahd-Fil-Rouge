@@ -31,7 +31,7 @@ class Member extends Model
 
     public function paramedical_session_reservation() : HasMany
     {
-        return $this->hasMany(ParamedicalServiceReservation::class);
+        return $this->hasMany(ParamedicalSessionReservation::class);
     }
     
     public function paramedical_service():BelongsToMany

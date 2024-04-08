@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ParamedicalServiceReservation extends Model
+class ParamedicalSessionReservation extends Model
 {
     use HasFactory;
 

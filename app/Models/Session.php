@@ -12,7 +12,7 @@ class Session extends Model
     use HasFactory;
 
     protected $fillable = [
-        "date","departure_hour","ending_hour","doctor_id",
+        "date","departure_hour","ending_hour","doctor_id","paramedical_service_id"
     ] ;
 
     public function doctors():BelongsTo
@@ -27,6 +27,6 @@ class Session extends Model
 
     public function paramedical_service_reservation(): HasOne
     {
-        return $this->hasOne(ParamedicalServiceReservation::class);
+        return $this->hasOne(ParamedicalSessionReservation::class);
     }
 }
