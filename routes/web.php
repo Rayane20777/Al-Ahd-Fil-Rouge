@@ -33,6 +33,14 @@ Route::get('/admin/doctors', function () {
     return view('/admin/doctors');
 });
 
+Route::get('/admin/events', function () {
+    return view('/admin/events');
+});
+
+Route::get('/admin/old_events', function () {
+    return view('/admin/old_events');
+});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });

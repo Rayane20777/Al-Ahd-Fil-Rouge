@@ -18,7 +18,7 @@
             <span class="text-lg font-bold text-white ml-3">Logo</span>
         </a>
         <ul class="mt-4">
-            <li class="mb-1 group active">
+            <li class="mb-1 group ">
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class="ri-home-2-line mr-3 text-lg"></i>
                     <span class="text-sm">Dashboard</span>
@@ -32,10 +32,10 @@
                 </a>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="#" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Doctors</a>
+                        <a href="/admin/doctors" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Doctors</a>
                     </li> 
                     <li class="mb-4">
-                        <a href="#" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Childrens</a>
+                        <a href="/admin/users" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Childrens</a>
                     </li>   
                 </ul>
             </li>
@@ -47,21 +47,16 @@
                 </a>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="#" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Manage ongoing events</a>
+                        <a href="/admin/events" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Manage ongoing events</a>
                     </li>
                 </ul>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="#" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Manage old events</a>
+                        <a href="/admin/old_events" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Manage old events</a>
                     </li>
                 </ul>
             </li>
-            <li class="mb-1 group">
-                <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-settings-2-line mr-3 text-lg"></i>
-                    <span class="text-sm">Settings</span>
-                </a>
-            </li>
+           
         </ul>
     </div>
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
@@ -82,78 +77,7 @@
             </ul>
             <ul class="ml-auto flex items-center">
                 
-                <li class="dropdown">
-                    <button type="button" class="dropdown-toggle text-gray-400 w-8 h-8 rounded flex items-center justify-center hover:bg-gray-50 hover:text-gray-600">
-                        <i class="ri-notification-3-line"></i>
-                    </button>
-                    <div class="dropdown-menu shadow-md shadow-black/5 z-30 hidden max-w-xs w-full bg-white rounded-md border border-gray-100">
-                        <div class="flex items-center px-4 pt-4 border-b border-b-gray-100 notification-tab">
-                            <button type="button" data-tab="notification" data-tab-page="notifications" class="text-gray-400 font-medium text-[13px] hover:text-gray-600 border-b-2 border-b-transparent mr-4 pb-1 active">Notifications</button>
-                            <button type="button" data-tab="notification" data-tab-page="messages" class="text-gray-400 font-medium text-[13px] hover:text-gray-600 border-b-2 border-b-transparent mr-4 pb-1">Messages</button>
-                        </div>
-                        <div class="my-2">
-                            <ul class="max-h-64 overflow-y-auto" data-tab-for="notification" data-page="notifications">
-                                <li>
-                                    <a href="#" class="py-2 px-4 flex items-center hover:bg-gray-50 group">
-                                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                        <div class="ml-2">
-                                            <div class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">New order</div>
-                                            <div class="text-[11px] text-gray-400">from a user</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                            <ul class="max-h-64 overflow-y-auto hidden" data-tab-for="notification" data-page="messages">
-                                <li>
-                                    <a href="#" class="py-2 px-4 flex items-center hover:bg-gray-50 group">
-                                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                        <div class="ml-2">
-                                            <div class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">John Doe</div>
-                                            <div class="text-[11px] text-gray-400">Hello there!</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="py-2 px-4 flex items-center hover:bg-gray-50 group">
-                                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                        <div class="ml-2">
-                                            <div class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">John Doe</div>
-                                            <div class="text-[11px] text-gray-400">Hello there!</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="py-2 px-4 flex items-center hover:bg-gray-50 group">
-                                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                        <div class="ml-2">
-                                            <div class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">John Doe</div>
-                                            <div class="text-[11px] text-gray-400">Hello there!</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="py-2 px-4 flex items-center hover:bg-gray-50 group">
-                                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                        <div class="ml-2">
-                                            <div class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">John Doe</div>
-                                            <div class="text-[11px] text-gray-400">Hello there!</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="py-2 px-4 flex items-center hover:bg-gray-50 group">
-                                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                        <div class="ml-2">
-                                            <div class="text-[13px] text-gray-600 font-medium truncate group-hover:text-blue-500">John Doe</div>
-                                            <div class="text-[11px] text-gray-400">Hello there!</div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+                
                 <li class="dropdown ml-3">
                     <button type="button" class="dropdown-toggle flex items-center">
                         <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
@@ -162,9 +86,7 @@
                         <li>
                             <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
                         </li>
-                        <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                        </li>
+                       
                         <li>
                             <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
                         </li>
@@ -180,19 +102,7 @@
                             <div class="text-2xl font-semibold mb-1">10</div>
                             <div class="text-sm font-medium text-gray-400">Active orders</div>
                         </div>
-                        <div class="dropdown">
-                            <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                       
                     </div>
                    
                 </div>
@@ -205,19 +115,7 @@
                             </div>
                             <div class="text-sm font-medium text-gray-400">Visitors</div>
                         </div>
-                        <div class="dropdown">
-                            <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                       
                     </div>
                     
                 </div>
@@ -227,19 +125,7 @@
                             <div class="text-2xl font-semibold mb-1"><span class="text-base font-normal text-gray-400 align-top">&dollar;</span>2,345</div>
                             <div class="text-sm font-medium text-gray-400">Active orders</div>
                         </div>
-                        <div class="dropdown">
-                            <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </div>
                     <a href="#" class="text-blue-500 font-medium text-sm hover:text-blue-600">View details</a>
                 </div>
@@ -248,25 +134,9 @@
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
                     <div class="flex justify-between mb-4 items-start">
                         <div class="font-medium">Manage orders</div>
-                        <div class="dropdown">
-                            <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                       
                     </div>
-                    <div class="flex items-center mb-4 order-tab">
-                        <button type="button" data-tab="order" data-tab-page="active" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tl-md rounded-bl-md hover:text-gray-600 active">Active</button>
-                        <button type="button" data-tab="order" data-tab-page="completed" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 hover:text-gray-600">Completed</button>
-                        <button type="button" data-tab="order" data-tab-page="canceled" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tr-md rounded-br-md hover:text-gray-600">Canceled</button>
-                    </div>
+                   
                     <div class="overflow-x-auto">
                         <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
                             <thead>
@@ -297,66 +167,7 @@
                                 </tr>
                                 
                         </table>
-                        <table class="w-full min-w-[540px] hidden" data-tab-for="order" data-page="completed">
-                            <thead>
-                                <tr>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Service</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Estimate</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Budget</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                        </div>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">3 days</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">$56</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Completed</span>
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                        <table class="w-full min-w-[540px] hidden" data-tab-for="order" data-page="canceled">
-                            <thead>
-                                <tr>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Service</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Estimate</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Budget</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
-                                        </div>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">3 days</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">$56</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-rose-500/10 text-rose-500 font-medium text-[12px] leading-none">Canceled</span>
-                                    </td>
-                                </tr>
-                               
-                            </tbody>
-                        </table>
+                       
                     </div>
                 </div>
                 
