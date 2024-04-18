@@ -53,19 +53,31 @@ Route::get('/admin/paramedical_services', function () {
 
 
 
-Route::get('/secretary/paramedical_services', function () {
-    return view('/secretary/paramedical_services');
+Route::get('/secretary/users', function () {
+    return view('/secretary/users');
 });
 
 
 
-Route::get('/secretary/paramedical_services', function () {
-    return view('/secretary/paramedical_services');
+Route::get('/secretary/appointments', function () {
+    return view('/secretary/appointments');
 });
 
 
-
-Route::get('/secretary/paramedical_services', function () {
-    return view('/secretary/paramedical_services');
+Route::get('/secretary/doctors', function () {
+    return view('/secretary/doctors');
 });
 
+
+Route::get('/secretary/appointment_reservations', function () {
+    return view('/secretary/appointment_reservations');
+});
+
+Route::get('/secretary/sessions', function () {
+    return view('/secretary/sessions');
+});
+
+
+Route::get('/secretary/reserved_sessions', function () {
+    return view('/secretary/reserved_sessions');
+});
