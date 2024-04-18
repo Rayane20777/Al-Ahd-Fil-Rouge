@@ -41,26 +41,31 @@ Route::get('/admin/old_events', function () {
     return view('/admin/old_events');
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/admin/professions', function () {
+    return view('/admin/professions');
+});
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/admin/paramedical_services', function () {
+    return view('/admin/paramedical_services');
+});
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::get('/secretary/paramedical_services', function () {
+    return view('/secretary/paramedical_services');
+});
+
+
+
+Route::get('/secretary/paramedical_services', function () {
+    return view('/secretary/paramedical_services');
+});
+
+
+
+Route::get('/secretary/paramedical_services', function () {
+    return view('/secretary/paramedical_services');
+});
+
