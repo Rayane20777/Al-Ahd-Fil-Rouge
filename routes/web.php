@@ -58,14 +58,13 @@ Route::get('/secretary/users', function () {
 });
 
 
-
-Route::get('/secretary/appointments', function () {
-    return view('/secretary/appointments');
+Route::get('/secretary/doctors', function () {
+    return view('/secretary/doctors');
 });
 
 
-Route::get('/secretary/doctors', function () {
-    return view('/secretary/doctors');
+Route::get('/secretary/appointments', function () {
+    return view('/secretary/appointments');
 });
 
 

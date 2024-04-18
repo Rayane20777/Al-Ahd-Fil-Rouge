@@ -26,37 +26,53 @@
             </li>
             <li class="mb-1 group">
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle">
-                    <i class="ri-instance-line mr-3 text-lg"></i>
+                    <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
                     <span class="text-sm">Users</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="/admin/doctors" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Doctors</a>
+                        <a href="/secretary/doctors" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Doctors</a>
                     </li> 
                     <li class="mb-4">
-                        <a href="/admin/users" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Childrens</a>
+                        <a href="/secretary/users" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Childrens</a>
                     </li>   
                 </ul>
             </li>
             <li class="mb-1 group">
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle">
-                    <i class="ri-flashlight-line mr-3 text-lg"></i>
-                    <span class="text-sm">Events</span>
+                    <i class="ri-reserved-fill mr-3 text-lg"></i>
+                    <span class="text-sm">Reservations</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="/admin/events" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Manage ongoing events</a>
+                        <a href="/secretary/appointment_reservations" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Appointment reservations</a>
                     </li>
                 </ul>
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
-                        <a href="/admin/old_events" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Manage old events</a>
+                        <a href="/secretary/session_reservations" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Sessions reservations</a>
                     </li>
                 </ul>
             </li>
-           
+            <li class="mb-1 group">
+                <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle">
+                    <i class="ri-calendar-2-fill mr-3 text-lg"></i>
+                    <span class="text-sm">Calendar</span>
+                    <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
+                </a>
+                <ul class="pl-7 mt-2 hidden group-[.selected]:block">
+                    <li class="mb-4">
+                        <a href="/secretary/appointments" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Appointments</a>
+                    </li>
+                </ul>
+                <ul class="pl-7 mt-2 hidden group-[.selected]:block">
+                    <li class="mb-4">
+                        <a href="/secretary/sessions" class="text-gray-300 text-sm flex items-center hover:text-gray-100 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Sessions</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
