@@ -12,8 +12,14 @@ class MemberParamedicalServiceRepository implements MemberParamedicalServiceRepo
         return MemberParamedicalService::all();
     }
 
-    public function storeMemberParamedicalService(array $data)
+    public function storeMemberParamedicalService($item, $member)
     {
-        return MemberParamedicalService::create($data);
+        return MemberParamedicalService::create([
+            'member_id' => $member,
+            'paramedical_service_id' => $item
+        ]);
     }
+
+    
+
 }

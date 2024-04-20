@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\InterfaceS;
+namespace App\Services\Interfaces;
 
 interface MemberParamedicalServiceServiceInterface
 {

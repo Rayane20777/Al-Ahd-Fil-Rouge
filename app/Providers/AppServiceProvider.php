@@ -13,6 +13,8 @@ use App\Services\Interfaces\SessionServiceInterface;
 use App\Repositories\Interfaces\SessionRepositoryInterface;
 use App\Repositories\Interfaces\ParamedicalServiceRepositoryInterface;
 use App\Services\Interfaces\ParamedicalServiceServiceInterface;
+use App\Repositories\Interfaces\MemberParamedicalServiceRepositoryInterface;
+use App\Services\Interfaces\MemberParamedicalServiceServiceInterface;
 use App\Repositories\ProfessionRepository;
 use App\Services\ProfessionService;
 use App\Repositories\EventRepository;
@@ -23,6 +25,8 @@ use App\Services\SessionService;
 use App\Repositories\SessionRepository;
 use App\Repositories\ParamedicalServiceRepository;
 use App\Services\ParamedicalServiceService;
+use App\Repositories\MemberParamedicalServiceRepository;
+use App\Services\MemberParamedicalServiceService;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 
@@ -42,7 +46,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AppointmentRepositoryInterface::class, AppointmentRepository::class);   
         $this->app->bind(AppointmentServiceInterface::class, AppointmentService::class);   
         $this->app->bind(ParamedicalServiceRepositoryInterface::class, ParamedicalServiceRepository::class);
-        $this->app->bind(ParamedicalServiceServiceInterface::class, ParamedicalServiceService::class);   
+        $this->app->bind(ParamedicalServiceServiceInterface::class, ParamedicalServiceService::class);
+        $this->app->bind(MemberParamedicalServiceRepositoryInterface::class, MemberParamedicalServiceRepository::class);
+        $this->app->bind(MemberParamedicalServiceServiceInterface::class, MemberParamedicalServiceService::class); 
 
      }
 

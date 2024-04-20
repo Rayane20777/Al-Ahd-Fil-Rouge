@@ -17,40 +17,60 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/login', function () {
     return view('login');
 });
+
 
 Route::get('/register', function () {
     return view('register');
 });
 
+
+Route::get('/events', function () {
+    return view('events');
+});
+
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+///////////////////////////////////////////////////////////////////////
+
+
 Route::get('/admin/users', function () {
     return view('/admin/users');
 });
+
 
 Route::get('/admin/doctors', function () {
     return view('/admin/doctors');
 });
 
+
 Route::get('/admin/events', function () {
     return view('/admin/events');
 });
+
 
 Route::get('/admin/old_events', function () {
     return view('/admin/old_events');
 });
 
+
 Route::get('/admin/professions', function () {
     return view('/admin/professions');
 });
+
 
 Route::get('/admin/paramedical_services', function () {
     return view('/admin/paramedical_services');
 });
 
 
-
+///////////////////////////////////////////////////////////////////////
 
 
 Route::get('/secretary/users', function () {
@@ -72,6 +92,7 @@ Route::get('/secretary/appointment_reservations', function () {
     return view('/secretary/appointment_reservations');
 });
 
+
 Route::get('/secretary/sessions', function () {
     return view('/secretary/sessions');
 });
@@ -79,4 +100,9 @@ Route::get('/secretary/sessions', function () {
 
 Route::get('/secretary/reserved_sessions', function () {
     return view('/secretary/reserved_sessions');
+});
+
+
+Route::get('/beneficiary/home', function () {
+    return view('/beneficiary/home');
 });

@@ -8,6 +8,7 @@ use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\API\SessionController;
 use App\Http\Controllers\API\AppointmentController;
 use App\Http\Controllers\API\ParamedicalServiceController;
+use App\Http\Controllers\API\MemberParamedicalServiceController;
 
 
 /*
@@ -76,4 +77,12 @@ Route::controller(SessionController::class)->group(function () {
     Route::post('/session/update/{id}', 'update');
     Route::post('/session/destroy/{id}', 'destroy');
     Route::post('/session/make/{id}', 'makeSession');
+});
+
+
+Route::controller(MemberParamedicalServiceController::class)->group(function () {
+    Route::post('/member_paramedical_service/index', 'index');
+    Route::post('/member_paramedical_service/store', 'store');
+    Route::post('/paramedical_service/update/{id}', 'update');
+    Route::post('/paramedical_service/destroy/{id}', 'destroy');
 });

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\MemberParamedicalServiceRequest;
-use App\Services\InterfaceS\MemberParamedicalServiceServiceInterface;
+use App\Services\Interfaces\MemberParamedicalServiceServiceInterface;
 use Exception;
 use App\Traits\ResponseTrait;
 
@@ -32,6 +32,10 @@ class MemberParamedicalServiceController extends Controller
         } catch (Exception $e){
             return $this->responseError($e->getMessage());
         }
-        return $this->responseSuccess(null, "Member paramedical services created successfully", 201);
+        // return $this->responseSuccess(null, "Member paramedical services created successfully", 201);
+        return response()->json('hello', 200);
     }
+
+
+    
 }

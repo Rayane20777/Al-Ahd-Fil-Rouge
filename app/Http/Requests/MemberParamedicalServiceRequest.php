@@ -11,7 +11,7 @@ class MemberParamedicalServiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class MemberParamedicalServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'member_id' => 'required',
+            'paramedical_service_ids' => 'required|array',
         ];
     }
 }
