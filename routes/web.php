@@ -106,3 +106,7 @@ Route::get('/secretary/reserved_sessions', function () {
 Route::get('/beneficiary/home', function () {
     return view('/beneficiary/home');
 });
+
+Route::get('/beneficiary/sessions', function () {
+    return view('/beneficiary/sessions');
+});
