@@ -20,11 +20,12 @@ class SessionService implements SessionServiceInterface
 
     public function allSession()
     {
+        return $this->repository->allSession();
 
     }
     public function storeSession($data)
     {
-        $this->repository->storeSession($data);
+        return $this->repository->storeSession($data);
     }
     public function findSession($id)
     {
@@ -32,12 +33,12 @@ class SessionService implements SessionServiceInterface
     }
     public function updateSession($data,$id)
     {
-        $this->repository->updateSession($data,$id);
+        return $this->repository->updateSession($data,$id);
 
     }
     public function destroySession($id)
     {
-        $this->repository->destroySession($id);
+        return $this->repository->destroySession($id);
 
     }
     public function makeSession($id)
@@ -47,7 +48,7 @@ class SessionService implements SessionServiceInterface
 
         $member_id = $user->member()->first()->id;
 
-        $this->repository->makeSession($id, $member_id);
+        return $this->repository->makeSession($id, $member_id);
 
     }
      

@@ -19,11 +19,12 @@ class ProfessionService implements ProfessionServiceInterface
 
     public function allProfession()
     {
+        return $this->repository->allProfession();
 
     }
     public function storeProfession($data)
     {
-        $this->repository->storeProfession($data);
+        return $this->repository->storeProfession($data);
     }
     public function findProfession($id)
     {
@@ -31,12 +32,12 @@ class ProfessionService implements ProfessionServiceInterface
     }
     public function updateProfession($data,$id)
     {
-        $this->repository->updateProfession($data,$id);
+        return $this->repository->updateProfession($data,$id);
 
     }
     public function destroyProfession($id)
     {
-        $this->repository->destroyProfession($id);
+        return $this->repository->destroyProfession($id);
 
     }
   

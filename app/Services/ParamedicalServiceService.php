@@ -19,11 +19,12 @@ class ParamedicalServiceService implements ParamedicalServiceServiceInterface
 
     public function allParamedicalService()
     {
+        return $this->repository->allParamedicalService();
 
     }
     public function storeParamedicalService($data)
     {
-        $this->repository->storeParamedicalService($data);
+        return $this->repository->storeParamedicalService($data);
     }
     public function findParamedicalService($id)
     {
@@ -31,12 +32,12 @@ class ParamedicalServiceService implements ParamedicalServiceServiceInterface
     }
     public function updateParamedicalService($data,$id)
     {
-        $this->repository->updateParamedicalService($data,$id);
+        return $this->repository->updateParamedicalService($data,$id);
 
     }
     public function destroyParamedicalService($id)
     {
-        $this->repository->destroyParamedicalService($id);
+        return $this->repository->destroyParamedicalService($id);
 
     }
   

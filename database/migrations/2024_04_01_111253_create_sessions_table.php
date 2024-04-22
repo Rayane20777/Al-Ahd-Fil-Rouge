@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->date('departure_hour');
-            $table->date('ending_hour');
+            $table->string('departure_hour');
+            $table->string('ending_hour');
             $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->foreignId('paramedical_service_id')->constrained('paramedical_services')->onDelete('cascade');
             $table->softDeletes();

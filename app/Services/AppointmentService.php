@@ -20,11 +20,11 @@ class AppointmentService implements AppointmentServiceInterface
 
     public function allAppointment()
     {
-
+        return $this->repository->allAppointment();
     }
     public function storeAppointment($data)
     {
-        $this->repository->storeAppointment($data);
+        return $this->repository->storeAppointment($data);
     }
     public function findAppointment($id)
     {
@@ -32,34 +32,32 @@ class AppointmentService implements AppointmentServiceInterface
     }
     public function updateAppointment($data,$id)
     {
-        $this->repository->updateAppointment($data,$id);
+        return $this->repository->updateAppointment($data,$id);
 
     }
     public function destroyAppointment($id)
     {
-        $this->repository->destroyAppointment($id);
+        return $this->repository->destroyAppointment($id);
 
     }
     public function makeAppointment($id)
     {
 
-        $user = JWTAuth::user();
 
-        $member_id = $user->member()->first()->id;
-
-        $this->repository->makeAppointment($id, $member_id);
+        $member_id = auth()->user()->member()->first()->id;
+        return $this->repository->makeAppointment($id, $member_id);
 
     }
      
     public function approveAppointment($id){
 
-        $this->repository->approveAppointment($id);
+        return $this->repository->approveAppointment($id);
 
     }
 
     public function denyAppointment($id){
         
-        $this->repository->denyAppointment($id);
+        return $this->repository->denyAppointment($id);
 
     }
     

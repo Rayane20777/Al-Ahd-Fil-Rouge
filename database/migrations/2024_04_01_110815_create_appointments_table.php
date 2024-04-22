@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->date('departure_hour');
-            $table->date('ending_hour'); 
+            $table->string('departure_hour');
+            $table->string('ending_hour'); 
             $table->softDeletes();
             $table->timestamps();
         });

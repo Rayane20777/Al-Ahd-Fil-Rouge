@@ -124,6 +124,10 @@ Route::get('/member/sessions', function () {
     return view('/member/sessions');
 });
 
+Route::get('/member/appointments', function () {
+    return view('/member/appointments');
+})->name('appointments.member.index');
+
 
 
 
@@ -145,7 +149,7 @@ Route::controller(EventController::class)->group(function () {
 });
 
 Route::controller(AppointmentController::class)->group(function () {
-    Route::post('/appointment/index', 'index');
+    Route::get('/appointment/index', 'index')->name('appointments.index');
     Route::post('/appointment/store', 'store');
     Route::post('/appointment/update/{id}', 'update');
     Route::post('/appointment/destroy/{id}', 'destroy');

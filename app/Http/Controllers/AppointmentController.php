@@ -70,7 +70,7 @@ class AppointmentController extends Controller
         
         try {
             $this->service->makeAppointment($id);
-            return redirect()->route('appointments.index')->with('success', 'Appointment reserved successfully');
+            return redirect()->route('appointments.member.index')->with('success', 'Appointment reserved successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
