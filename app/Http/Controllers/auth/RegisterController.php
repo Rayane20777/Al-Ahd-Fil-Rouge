@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Models\Member;
 use App\Models\Secretary;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class RegisterController extends Controller
 {
@@ -17,14 +19,13 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'name' => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:8|max:255',
             'address' => 'required|min:8|max:255',
-            'picture' => 'required|image'
         ]);
 
-        $attributes['picture'] = $request->file('picture')->store('uploads');
 
         $user = User::create($attributes);
 
@@ -41,10 +42,10 @@ class RegisterController extends Controller
             ]);
 
             $member = new Member();
-            $member->description = $request->input('child_first_name');
-            $member->registration = $request->input('child_last_name');
-            $member->typeVehicle = $request->input('date_of_birth');
-            $member->typePayment = $request->input('disorder');
+            $member->child_first_name = $request->input('child_first_name');
+            $member->child_last_name = $request->input('child_last_name');
+            $member->date_of_birth = $request->input('date_of_birth');
+            $member->disorder = $request->input('disorder');
             $member->user_id = $user->id;
             $member->save();
         }

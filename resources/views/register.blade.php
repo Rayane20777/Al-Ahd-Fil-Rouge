@@ -21,8 +21,10 @@
 <!-- Col -->
 				<div class="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-lg lg:rounded-l-none">
 					<h3 class="py-4 text-2xl text-center text-gray-800 dark:text-white">Create an Account!</h3>
-					<form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
-						<div class="mb-4 md:flex md:justify-between">
+					<form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded" id="registerForm" action="{{route('register')}}" method="POST"  enctype="multipart/form-data">
+                         @csrf
+                         <input type="hidden" name="role" value="member">
+                       	<div class="mb-4 md:flex md:justify-between">
 							<div class="mb-4 md:mr-2 md:mb-0">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="firstName">
                                     First Name
@@ -32,6 +34,7 @@
                                     id="firstName"
                                     type="text"
                                     placeholder="First Name"
+                                    name="first_name"
                                 />
 							</div>
 							<div class="md:ml-2">
@@ -43,7 +46,8 @@
                                     id="lastName"
                                     type="text"
                                     placeholder="Last Name"
-                                />
+                                    name="last_name"
+/>
 							</div>
 						</div>
 						<div class="mb-4">
@@ -55,6 +59,7 @@
                                 id="email"
                                 type="email"
                                 placeholder="Email"
+                                name="email"
                             />
 						</div>
 						<div class="mb-4 md:flex md:justify-between">
@@ -67,18 +72,20 @@
                                     id="password"
                                     type="password"
                                     placeholder="******************"
+                                    name="password"
                                 />
 								<p class="text-xs italic text-red-500">Please choose a password.</p>
 							</div>
 							<div class="md:ml-2">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="c_password">
-                                    Confirm Password
+                                    Address
                                 </label>
 								<input
                                     class="w-full px-8 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="c_password"
-                                    type="password"
-                                    placeholder="******************"
+                                    id="address"
+                                    type="address"
+                                    placeholder="address"
+                                    name="address"
                                 />
 							</div>
 						</div>
@@ -92,6 +99,7 @@
                                     id="firstName"
                                     type="text"
                                     placeholder="Child First Name"
+                                    name="child_first_name"
                                 />
 							</div>
 							<div class="md:ml-2">
@@ -103,40 +111,45 @@
                                     id="lastName"
                                     type="text"
                                     placeholder="Child Last Name"
+                                    name="child_last_name"
                                 />
 							</div>
 						</div>
                         <div class="mb-4 md:flex md:justify-between">
 							<div class="mb-4 md:mr-2 md:mb-0">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="password">
-                                    Age
+                                    Date of birth
                                 </label>
 								<input
                                     class="w-full px-8 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="firstName"
-                                    type="text"
-                                    placeholder="Age"
+                                    type="date"
+                                    placeholder="date of birth"
+                                    name="date_of_birth"
+
                                 />
 							</div>
 							<div class="md:ml-2">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="c_password">
-                                    Date of birth
+                                    Disorder
                                 </label>
 								<input
                                     class="w-full px-8 py-2 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="date_of_birth"
                                     type="text"
                                     placeholder="Date of birth"
+                                    name="disorder"
                                 />
 							</div>
 						</div>
+                       
 						<div class="mb-6 text-center">
-							<button
-                                class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline"
-                                type="button"
-                            >
-                                Register Account
-                            </button>
+                        <button
+            class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline"
+            type="submit"
+        >
+            Register Account
+        </button>
 						</div>
 						<hr class="mb-6 border-t" />
 						<div class="text-center">

@@ -1,8 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfessionController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ParamedicalServiceController;
+use App\Http\Controllers\MemberParamedicalServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +31,7 @@ Route::get('/login', function () {
 });
 
 
-Route::get('/register', function () {
-    return view('register');
-});
+
 
 
 Route::get('/events', function () {
@@ -39,7 +44,9 @@ Route::get('/profile', function () {
 });
 
 Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -114,4 +121,59 @@ Route::get('/beneficiary/home', function () {
 
 Route::get('/beneficiary/sessions', function () {
     return view('/beneficiary/sessions');
+});
+
+
+
+
+
+
+Route::controller(ProfessionController::class)->group(function () {
+    Route::post('profession/index', 'index');
+    Route::post('profession/store', 'store');
+    Route::post('profession/update/{id}', 'update');
+    Route::post('profession/destroy/{id}', 'destroy');
+});
+
+
+Route::controller(EventController::class)->group(function () {
+    Route::post('/event/index', 'index');
+    Route::post('/event/store', 'store');
+    Route::post('/event/update/{id}', 'update');
+    Route::post('/event/destroy/{id}', 'destroy');
+});
+
+Route::controller(AppointmentController::class)->group(function () {
+    Route::post('/appointment/index', 'index');
+    Route::post('/appointment/store', 'store');
+    Route::post('/appointment/update/{id}', 'update');
+    Route::post('/appointment/destroy/{id}', 'destroy');
+    Route::post('/appointment/make/{id}', 'makeAppointment');
+    Route::post('/appointment/approve/{id}', 'approveAppointment');
+    Route::post('/appointment/deny/{id}', 'denyAppointment');
+});
+
+
+Route::controller(ParamedicalServiceController::class)->group(function () {
+    Route::post('/paramedical_service/index', 'index');
+    Route::post('/paramedical_service/store', 'store');
+    Route::post('/paramedical_service/update/{id}', 'update');
+    Route::post('/paramedical_service/destroy/{id}', 'destroy');
+});
+
+
+Route::controller(SessionController::class)->group(function () {
+    Route::post('/session/index', 'index');
+    Route::post('/session/store', 'store');
+    Route::post('/session/update/{id}', 'update');
+    Route::post('/session/destroy/{id}', 'destroy');
+    Route::post('/session/make/{id}', 'makeSession');
+});
+
+
+Route::controller(MemberParamedicalServiceController::class)->group(function () {
+    Route::post('/member_paramedical_service/index', 'index');
+    Route::post('/member_paramedical_service/store', 'store');
+    Route::post('/paramedical_service/update/{id}', 'update');
+    Route::post('/paramedical_service/destroy/{id}', 'destroy');
 });

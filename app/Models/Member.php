@@ -16,11 +16,10 @@ class Member extends Model
     protected $fillable = [
 
         "user_id",
-        "first_name",
-        "last_name",
+        "child_first_name",
+        "child_last_name",
         "date_of_birth",
         "disorder",
-        "description",
         "status",
         
     ] ;
