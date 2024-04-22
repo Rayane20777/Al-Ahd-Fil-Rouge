@@ -25,64 +25,72 @@ class AppointmentController extends Controller
 
     public function index()
     {
-        $service = $this->service->allAppointment();
-        return response()->json($service,201);
-
+        try {
+            $appointments = $this->service->allAppointment();
+            return view('appointments.index', ['appointments' => $appointments]);
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function store(AppointmentRequest $request)
     {
         
-        $data = $request->validated();
-
         try {
-            $data = $this->service->storeappointment($data);
-        } catch (Exception $e){
-            return $this->responseError($e->getMessage());
+            $data = $request->validated();
+            $this->service->storeAppointment($data);
+            return redirect()->route('appointments.index')->with('success', 'Appointment created successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
-
-        return response()->json($data,201);
     }
 
     public function update(AppointmentRequest $request, $id)
     {
-      try{
-        $this->service->updateAppointment($request->all(), $id);
-    }catch(Exception $e){
-        return $this->responseError($e->getMessage()); 
-    }
-        return response()->json($request,201);
+        try {
+            $this->service->updateAppointment($request->all(), $id);
+            return redirect()->route('appointments.index')->with('success', 'Appointment updated successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function destroy($id)
     { 
-        try{
+        try {
             $this->service->destroyAppointment($id);
-
-        }catch(Exception $e){
-            return $this->responseError($e->getMessage()); 
+            return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-        return response()->json('deleted');
     }
 
     public function makeAppointment(Request $request,$id)
     {
         
-        $this->service->makeAppointment($id);
-
-        return response()->json('reserved succesfuly');
+        try {
+            $this->service->makeAppointment($id);
+            return redirect()->route('appointments.index')->with('success', 'Appointment reserved successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function approveAppointment(Request $request , $id){
-        $this->service->approveAppointment($id);
-
-        return response()->json('approved succesfully');
+        try {
+            $this->service->approveAppointment($id);
+            return redirect()->route('appointments.index')->with('success', 'Appointment approved successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function denyAppointment(Request $request , $id){
-        $this->service->denyAppointment($id);
-
-        return response()->json('denied succesfully');
+        try {
+            $this->service->denyAppointment($id);
+            return redirect()->route('appointments.index')->with('success', 'Appointment denied successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

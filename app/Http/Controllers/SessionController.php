@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ParamedicalService;
 use App\Services\Interfaces\SessionServiceInterface;
 use App\Http\Requests\SessionRequest;
-use App\Models\ParamedicalServiceReservation;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -14,47 +12,60 @@ class SessionController extends Controller
 {
     private $service;
 
-    public function __construct(SessionServiceInterface $service){
+    public function __construct(SessionServiceInterface $service)
+    {
         $this->service = $service;
     }
-    public function index() {
-        $service = $this->service->allSession();
-        return response()->json($service,201);
+
+    public function index()
+    {
+        try {
+            $sessions = $this->service->allSession();
+            return view('sessions.index', ['sessions' => $sessions]);
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
-    public function store(SessionRequest $request){
+    public function store(SessionRequest $request)
+    {
         $data = $request->validated();
 
-        $this->service->storeSession($data);
-
-        return response()->json($data,201);
-    }
-
-    public function update(SessionRequest $request , $id){
-        try{
-            $this->service->updateSession($request->all(), $id);
-        }catch(Exception $e){
-            return $this->responseError($e->getMessage()); 
+        try {
+            $this->service->storeSession($data);
+            return redirect()->route('sessions.index')->with('success', 'Session created successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-            return response()->json($request,201);
     }
-    public function destroy($id)
-    { 
-        try{
-            $this->service->destroySession($id);
 
-        }catch(Exception $e){
-            return $this->responseError($e->getMessage()); 
-        }
-        return response()->json('deleted');
-    }
-    public function makeSession(Request $request,$id)
+    public function update(SessionRequest $request, $id)
     {
-        
-        $this->service->makeSession($id);
-
-        return response()->json('reserved succesfuly');
+        try {
+            $this->service->updateSession($request->all(), $id);
+            return redirect()->route('sessions.index')->with('success', 'Session updated successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
-   
 
+    public function destroy($id)
+    {
+        try {
+            $this->service->destroySession($id);
+            return redirect()->route('sessions.index')->with('success', 'Session deleted successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function makeSession(Request $request, $id)
+    {
+        try {
+            $this->service->makeSession($id);
+            return redirect()->route('sessions.index')->with('success', 'Session reserved successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
 }

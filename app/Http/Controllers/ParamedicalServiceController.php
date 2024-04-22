@@ -12,59 +12,50 @@ class ParamedicalServiceController extends Controller
 {
     private $service;
 
-    public function __construct(ParamedicalServiceServiceInterface $service){
+    public function __construct(ParamedicalServiceServiceInterface $service)
+    {
         $this->service = $service;
-
     }
-    /*
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
 
     public function index()
     {
-        $service = $this->service->allParamedicalService();
-        return response()->json($service,201);
-
+        try {
+            $paramedicalServices = $this->service->allParamedicalService();
+            return view('paramedical_services.index', ['paramedicalServices' => $paramedicalServices]);
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function store(ParamedicalServiceRequest $request)
     {
         $data = $request->validated();
 
-
-
         try {
-            $data = $this->service->storeParamedicalService($data);
-        } catch (Exception $e){
-            return $this->responseError($e->getMessage());
+            $this->service->storeParamedicalService($data);
+            return redirect()->route('paramedical_services.index')->with('success', 'Paramedical service created successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
-        return response()->json($data,201);
     }
 
     public function update(ParamedicalServiceRequest $request, $id)
     {
-      try{
-        $this->service->updateParamedicalService($request->all(), $id);
-
-      }catch(Exception $e){
-        return $this->responseError($e->getMessage()); 
-
-      }
-
-        return response()->json($request,201);
+        try {
+            $this->service->updateParamedicalService($request->all(), $id);
+            return redirect()->route('paramedical_services.index')->with('success', 'Paramedical service updated successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function destroy($id)
     {
-        try{
+        try {
             $this->service->destroyParamedicalService($id);
-
-        }catch(Exception $e){
-            return $this->responseError($e->getMessage()); 
+            return redirect()->route('paramedical_services.index')->with('success', 'Paramedical service deleted successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-        return response()->json('deleted');
     }
 }

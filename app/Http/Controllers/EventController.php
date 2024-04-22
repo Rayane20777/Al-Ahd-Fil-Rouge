@@ -12,21 +12,19 @@ class EventController extends Controller
 {
     private $service;
 
-    public function __construct(EventServiceInterface $service){
+    public function __construct(EventServiceInterface $service)
+    {
         $this->service = $service;
-
     }
-    /*
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
 
     public function index()
     {
-        $events = $this->service->allEvent();
-        return response()->json($events,201);
-
+        try {
+            $events = $this->service->allEvent();
+            return view('events.index', ['events' => $events]);
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function store(EventRequest $request)
@@ -34,40 +32,30 @@ class EventController extends Controller
         $data = $request->validated();
 
         try {
-            $data = $this->service->storeEvent($data);
-        } catch (Exception $e){
-            return $this->responseError($e->getMessage());
+            $this->service->storeEvent($data);
+            return redirect()->route('events.index')->with('success', 'Event created successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
-        
-
-        return response()->json($data,201);
     }
 
     public function update(EventRequest $request, $id)
     {
-        try{
+        try {
             $this->service->updateEvent($request->all(), $id);
-
-        }catch(Exception $e){
-            return $this->responseError($e->getMessage()); 
-
+            return redirect()->route('events.index')->with('success', 'Event updated successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-      
-
-        return response()->json($request,201);
     }
 
     public function destroy($id)
     {
-        try{
+        try {
             $this->service->destroyEvent($id);
-
-        }catch(Exception $e){
-            return $this->responseError($e->getMessage()); 
+            return redirect()->route('events.index')->with('success', 'Event deleted successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-        return response()->json('deleted');
     }
-
-
 }

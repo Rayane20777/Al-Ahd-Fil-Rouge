@@ -12,59 +12,50 @@ class ProfessionController extends Controller
 {
     private $service;
 
-    public function __construct(ProfessionServiceInterface $service){
+    public function __construct(ProfessionServiceInterface $service)
+    {
         $this->service = $service;
-
     }
-    /*
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
 
     public function index()
     {
-        $service = $this->service->allProfession();
-        return response()->json($service,201);
-
+        try {
+            $professions = $this->service->allProfession();
+            return view('professions.index', ['professions' => $professions]);
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function store(ProfessionRequest $request)
     {
         $data = $request->validated();
 
-        
-
         try {
-            $data = $this->service->storeProfession($data);
-        } catch (Exception $e){
-            return $this->responseError($e->getMessage());
+            $this->service->storeProfession($data);
+            return redirect()->route('professions.index')->with('success', 'Profession created successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
-        return response()->json($data,201);
     }
 
     public function update(ProfessionRequest $request, $id)
     {
-      try{
-        $this->service->updateProfession($request->all(), $id);
-      }catch(Exception $e){
-        return $this->responseError($e->getMessage()); 
-      }
-
-        return response()->json($request,201);
+        try {
+            $this->service->updateProfession($request->all(), $id);
+            return redirect()->route('professions.index')->with('success', 'Profession updated successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function destroy($id)
     {
-        try{
+        try {
             $this->service->destroyProfession($id);
-
-        }catch(Exception $e){
-            return $this->responseError($e->getMessage()); 
+            return redirect()->route('professions.index')->with('success', 'Profession deleted successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
-        return response()->json('deleted');
     }
-
 }

@@ -54,7 +54,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::get('/admin/users', function () {
     return view('/admin/users');
-});
+})->name('admin.users');
 
 
 Route::get('/admin/doctors', function () {
@@ -87,8 +87,7 @@ Route::get('/admin/paramedical_services', function () {
 
 Route::get('/secretary/users', function () {
     return view('/secretary/users');
-});
-
+})->name('secretary.users');
 
 Route::get('/secretary/doctors', function () {
     return view('/secretary/doctors');
@@ -115,12 +114,14 @@ Route::get('/secretary/reserved_sessions', function () {
 });
 
 
-Route::get('/beneficiary/home', function () {
-    return view('/beneficiary/home');
-});
+//////////////////////////////////////////////////////////////////////////////
 
-Route::get('/beneficiary/sessions', function () {
-    return view('/beneficiary/sessions');
+Route::get('/member/home', function () {
+    return view('/member/home');
+})->name('member.home');
+
+Route::get('/member/sessions', function () {
+    return view('/member/sessions');
 });
 
 

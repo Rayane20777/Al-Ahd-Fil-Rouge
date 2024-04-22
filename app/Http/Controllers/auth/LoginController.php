@@ -25,11 +25,11 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if ($user->secretary()->exists()) {
-                return redirect()->route('secretary.dashboard');
+                return redirect()->route('secretary.users');
             } elseif ($user->member()->exists()) {
-                return redirect()->route('member.dashboard');
+                return redirect()->route('member.home');
             } elseif ($user->admin()->exists()) {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.users');
             } else {
                 return redirect()->route('home');
             }
