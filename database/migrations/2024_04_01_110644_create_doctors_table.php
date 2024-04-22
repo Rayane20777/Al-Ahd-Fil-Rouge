@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('address');
+            $table->string('picture');
             $table->enum('status', ['pending','member','banned']);
             $table->foreignId('profession_id')->constrained('professions')->onDelete('cascade');
             $table->softDeletes();
