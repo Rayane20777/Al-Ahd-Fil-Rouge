@@ -134,7 +134,7 @@ Route::get('/member/appointments', function () {
 
 
 Route::controller(ProfessionController::class)->group(function () {
-    Route::post('profession/index', 'index');
+    Route::get('profession/index', 'index')->name('professions.index');
     Route::post('profession/store', 'store');
     Route::post('profession/update/{id}', 'update');
     Route::post('profession/destroy/{id}', 'destroy');
@@ -142,7 +142,7 @@ Route::controller(ProfessionController::class)->group(function () {
 
 
 Route::controller(EventController::class)->group(function () {
-    Route::post('/event/index', 'index');
+    Route::get('/event/index', 'index')->name('events.index');
     Route::post('/event/store', 'store');
     Route::post('/event/update/{id}', 'update');
     Route::post('/event/destroy/{id}', 'destroy');
@@ -160,7 +160,7 @@ Route::controller(AppointmentController::class)->group(function () {
 
 
 Route::controller(ParamedicalServiceController::class)->group(function () {
-    Route::post('/paramedical_service/index', 'index');
+    Route::get('/paramedical_service/index', 'index')->name('paramedical_services.index');
     Route::post('/paramedical_service/store', 'store');
     Route::post('/paramedical_service/update/{id}', 'update');
     Route::post('/paramedical_service/destroy/{id}', 'destroy');
@@ -168,7 +168,7 @@ Route::controller(ParamedicalServiceController::class)->group(function () {
 
 
 Route::controller(SessionController::class)->group(function () {
-    Route::post('/session/index', 'index');
+    Route::get('/session/index', 'index')->name('sessions.index');
     Route::post('/session/store', 'store');
     Route::post('/session/update/{id}', 'update');
     Route::post('/session/destroy/{id}', 'destroy');

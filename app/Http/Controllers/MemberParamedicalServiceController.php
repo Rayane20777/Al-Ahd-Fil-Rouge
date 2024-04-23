@@ -21,7 +21,7 @@ class MemberParamedicalServiceController extends Controller
     {
         try {
             $memberParamedicalServices = $this->service->allMemberParamedicalService();
-            return view('member_paramedical_services.index', ['memberParamedicalServices' => $memberParamedicalServices]);
+            return view('/secretary/users', ['memberParamedicalServices' => $memberParamedicalServices]);
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -33,7 +33,7 @@ class MemberParamedicalServiceController extends Controller
 
         try {
             $this->service->storeMemberParamedicalServices($data);
-            return redirect()->route('member_paramedical_services.index')->with('success', 'Member paramedical services created successfully');
+            return redirect()->back()->with('success', 'Member paramedical services assigned successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

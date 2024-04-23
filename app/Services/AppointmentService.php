@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
 use App\Services\Interfaces\AppointmentServiceInterface;
 use App\Traits\ResponseTrait;
-use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 
 class AppointmentService implements AppointmentServiceInterface

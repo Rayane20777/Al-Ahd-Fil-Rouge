@@ -10,12 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Doctor extends Model
 {
-    use HasFactory,OneToOneTrait;
+    use HasFactory;
 
     protected $fillable = [
-        "user_id",
+        "first_name",
+        "last_name",
+        "address",
         "profession_id",
-        "status",
+
     ] ;
 
     public function session():HasMany

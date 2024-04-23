@@ -75,10 +75,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(Secretary::class);
     }
-    public function doctor()
-    {
-        return $this->hasOne(Doctor::class);
-    }
+
     public function member()
     {
         return $this->hasOne(Member::class);

@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('address');
-            $table->string('picture');
-            $table->enum('status', ['pending','member','banned']);
             $table->foreignId('profession_id')->constrained('professions')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

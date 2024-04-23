@@ -21,7 +21,8 @@ class ProfessionController extends Controller
     {
         try {
             $professions = $this->service->allProfession();
-            return view('professions.index', ['professions' => $professions]);
+            dd($professions);
+            return view('/admin/professions', ['professions' => $professions]);
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

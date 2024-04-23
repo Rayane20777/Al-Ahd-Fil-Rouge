@@ -21,7 +21,9 @@ class ParamedicalServiceController extends Controller
     {
         try {
             $paramedicalServices = $this->service->allParamedicalService();
-            return view('paramedical_services.index', ['paramedicalServices' => $paramedicalServices]);
+
+            dd($paramedicalServices );
+            return view('admin/paramedical_services', ['paramedicalServices' => $paramedicalServices]);
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

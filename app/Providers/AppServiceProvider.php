@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Interfaces\ProfessionRepositoryInterface;
 use App\Services\Interfaces\ProfessionServiceInterface;
+use App\Repositories\Interfaces\DoctorRepositoryInterface;
+use App\Services\Interfaces\DoctorServiceInterface;
 use App\Repositories\Interfaces\EventRepositoryInterface;
 use App\Services\Interfaces\EventServiceInterface;
 use App\Repositories\Interfaces\AppointmentRepositoryInterface;
@@ -17,6 +19,8 @@ use App\Repositories\Interfaces\MemberParamedicalServiceRepositoryInterface;
 use App\Services\Interfaces\MemberParamedicalServiceServiceInterface;
 use App\Repositories\ProfessionRepository;
 use App\Services\ProfessionService;
+use App\Repositories\DoctorRepository;
+use App\Services\DoctorService;
 use App\Repositories\EventRepository;
 use App\Services\EventService;
 use App\Repositories\AppointmentRepository;
@@ -49,6 +53,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ParamedicalServiceServiceInterface::class, ParamedicalServiceService::class);
         $this->app->bind(MemberParamedicalServiceRepositoryInterface::class, MemberParamedicalServiceRepository::class);
         $this->app->bind(MemberParamedicalServiceServiceInterface::class, MemberParamedicalServiceService::class); 
+        $this->app->bind(DoctorServiceInterface::class, DoctorService::class); 
+        $this->app->bind(DoctorRepositoryInterface::class, DoctorRepository::class);
 
      }
 
