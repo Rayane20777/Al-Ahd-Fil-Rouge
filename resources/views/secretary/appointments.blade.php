@@ -195,6 +195,25 @@
 
 
         </div>
+
+        <div id="addProfessionForm" class="hidden fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-10 rounded-lg shadow-md md:w-3/4 mx-auto lg:w-1/2 relative">
+        <button id="closeFormButton" class="absolute top-2 right-2 p-2 text-gray-400 hover:text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <form action="{{ route('professions.store') }}" method="POST" class="mt-6">
+            @csrf
+            <div class="mb-5">
+                <label for="professionName" class="block mb-2 font-bold text-gray-600">Profession Name</label>
+                <input type="text" id="professionName" name="name" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+
+            <button type="submit" id="submitProfessionButton" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+        </form>
+    </div>
+</div>
     </main>
     <!-- end: Main -->
 
@@ -318,7 +337,37 @@ function hidePopper(popperId) {
 // end: Popper
 
 
+// JavaScript to handle button click event and show the form
+const addProfessionButton = document.getElementById('addProfessionButton');
+    const addProfessionForm = document.getElementById('addProfessionForm');
+    const closeFormButton = document.getElementById('closeFormButton');
+    const formContainer = document.querySelector('.bg-white');
+    // Function to show the form
+    function showAddProfessionForm() {
+        addProfessionForm.classList.remove('hidden');
+    }
 
+    // Function to hide the form
+    function hideAddProfessionForm() {
+        addProfessionForm.classList.add('hidden');
+    }
+
+    // Event listener for the Add Profession button
+    addProfessionButton.addEventListener('click', showAddProfessionForm);
+
+    // Event listener for the Submit button inside the form
+
+
+
+    closeFormButton.addEventListener('click', function() {
+    formContainer.style.display = 'none'; 
+
+    
+});
+
+document.getElementById("closeFormButton").addEventListener("click", function() {
+        document.getElementById("addProfessionForm").classList.add("hidden");
+    });
 
     </script>
 </body>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfessionController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AppointmentController;
@@ -134,10 +135,18 @@ Route::get('/member/appointments', function () {
 
 
 Route::controller(ProfessionController::class)->group(function () {
-    Route::get('profession/index', 'index')->name('professions.index');
-    Route::post('profession/store', 'store');
-    Route::post('profession/update/{id}', 'update');
-    Route::post('profession/destroy/{id}', 'destroy');
+    Route::get('/profession/index', 'index')->name('professions.index');
+    Route::post('/profession/store', 'store')->name('professions.store');
+    Route::post('/profession/update/{id}', 'update');
+    Route::post('/profession/destroy/{id}', 'destroy');
+});
+
+
+Route::controller(DoctorController::class)->group(function () {
+    Route::get('/doctor/index', 'index')->name('doctors.index');
+    Route::post('/doctor/store', 'store')->name('doctors.store');
+    Route::post('/doctor/update/{id}', 'update');
+    Route::post('/doctor/destroy/{id}', 'destroy');
 });
 
 
