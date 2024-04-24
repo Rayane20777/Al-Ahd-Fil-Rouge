@@ -193,6 +193,6 @@ Route::controller(MemberParamedicalServiceController::class)->group(function () 
 
 
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin/index', 'index')->name('admin_users.index');
+    Route::get('/admin/user/index', 'index')->name('admin_users.index');
 
 });
