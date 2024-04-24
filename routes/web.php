@@ -152,14 +152,14 @@ Route::controller(DoctorController::class)->group(function () {
 
 Route::controller(EventController::class)->group(function () {
     Route::get('/event/index', 'index')->name('events.index');
-    Route::post('/event/store', 'store');
+    Route::post('/event/store', 'store')->name('events.store');
     Route::post('/event/update/{id}', 'update');
     Route::post('/event/destroy/{id}', 'destroy');
 });
 
 Route::controller(AppointmentController::class)->group(function () {
     Route::get('/appointment/index', 'index')->name('appointments.index');
-    Route::post('/appointment/store', 'store');
+    Route::post('/appointment/store', 'store')->name('appointments.store');
     Route::post('/appointment/update/{id}', 'update');
     Route::post('/appointment/destroy/{id}', 'destroy');
     Route::post('/appointment/make/{id}', 'makeAppointment');

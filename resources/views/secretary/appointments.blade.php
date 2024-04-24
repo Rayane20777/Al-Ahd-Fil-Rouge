@@ -151,8 +151,11 @@
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
                     <div class="flex justify-between mb-4 items-start">
                         <div class="font-medium">Manage orders</div>
-                       
+                        <button id="addProfessionButton" class=" right-10 bg-blue-500 text-white py-3 px-6 rounded-md shadow-md hover:bg-blue-600 focus:outline-none">
+                         Add Appointment
+                         </button>                       
                     </div>
+
                    
                     <div class="overflow-x-auto">
                         <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
@@ -203,11 +206,19 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <form action="{{ route('professions.store') }}" method="POST" class="mt-6">
+        <form action="{{ route('appointments.store') }}" method="POST" class="mt-6">
             @csrf
             <div class="mb-5">
-                <label for="professionName" class="block mb-2 font-bold text-gray-600">Profession Name</label>
-                <input type="text" id="professionName" name="name" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
+                <label for="professionName" class="block mb-2 font-bold text-gray-600">Appointment Date</label>
+                <input type="date" id="professionate" name="date" placeholder="Enter appointment date" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+            <div class="mb-5">
+                <label for="professionName" class="block mb-2 font-bold text-gray-600">Profession Departure Hour</label>
+                <input type="text" id="professionName" name="departure_hour" placeholder="Enter appointment daparture hour" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+            <div class="mb-5">
+                <label for="professionName" class="block mb-2 font-bold text-gray-600">Profession Ending Hour</label>
+                <input type="text" id="professionName" name="ending_hour" placeholder="Enter appointment ending hour" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
 
             <button type="submit" id="submitProfessionButton" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>

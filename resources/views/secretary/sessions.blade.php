@@ -150,7 +150,9 @@
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
                     <div class="flex justify-between mb-4 items-start">
                         <div class="font-medium">Manage orders</div>
-                       
+                        <button id="addProfessionButton" class=" right-10 bg-blue-500 text-white py-3 px-6 rounded-md shadow-md hover:bg-blue-600 focus:outline-none">
+                         Add Sessions
+                         </button>                       
                     </div>
                    
                     <div class="overflow-x-auto">

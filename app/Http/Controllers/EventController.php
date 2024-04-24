@@ -21,7 +21,7 @@ class EventController extends Controller
     {
         try {
             $events = $this->service->allEvent();
-            return view('admin/events', ['events' => $events]);
+            return view('/admin/events', ['events' => $events]);
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

@@ -27,7 +27,7 @@ class AppointmentController extends Controller
     {
         try {
             $appointments = $this->service->allAppointment();
-            return view('appointments.index', ['appointments' => $appointments]);
+            return view('/secretary/appointments', ['appointments' => $appointments]);
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
