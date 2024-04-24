@@ -17,6 +17,10 @@ use App\Repositories\Interfaces\ParamedicalServiceRepositoryInterface;
 use App\Services\Interfaces\ParamedicalServiceServiceInterface;
 use App\Repositories\Interfaces\MemberParamedicalServiceRepositoryInterface;
 use App\Services\Interfaces\MemberParamedicalServiceServiceInterface;
+use App\Repositories\Interfaces\AdminRepositoryInterface;
+use App\Services\Interfaces\AdminServiceInterface;
+use App\Repositories\AdminRepository;
+use App\Services\AdminService;
 use App\Repositories\ProfessionRepository;
 use App\Services\ProfessionService;
 use App\Repositories\DoctorRepository;
@@ -43,6 +47,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ProfessionRepositoryInterface::class, ProfessionRepository::class);   
         $this->app->bind(ProfessionServiceInterface::class, ProfessionService::class);   
+        $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);   
+        $this->app->bind(AdminServiceInterface::class, AdminService::class);   
         $this->app->bind(SessionServiceInterface::class, SessionService::class);   
         $this->app->bind(SessionRepositoryInterface::class, SessionRepository::class);   
         $this->app->bind(EventRepositoryInterface::class, EventRepository::class);   

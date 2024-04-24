@@ -11,6 +11,8 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ParamedicalServiceController;
 use App\Http\Controllers\MemberParamedicalServiceController;
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -187,8 +189,13 @@ Route::controller(SessionController::class)->group(function () {
 
 Route::controller(MemberParamedicalServiceController::class)->group(function () {
     Route::get('/member_paramedical_service/index', 'index')->name('member_paramedical_services.index');
-    Route::post('/member_paramedical_service/store', 'store')->name('member_paramedical_services
-    .store'); 
+    Route::post('/member_paramedical_service/store', 'store')->name('member_paramedical_services.store'); 
     Route::post('/paramedical_service/update/{id}', 'update');
     Route::post('/paramedical_service/destroy/{id}', 'destroy');
+});
+
+
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/admin/users/index', 'index')->name('admin_users.index');
+
 });
