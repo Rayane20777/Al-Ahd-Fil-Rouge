@@ -7,6 +7,6 @@ use App\Models\User;
 trait OneToOneTrait {
 
     public function user() {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

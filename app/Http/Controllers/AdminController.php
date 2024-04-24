@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Interfaces\AdminServiceInterface;
 use Exception;
+use Illuminate\Support\Facades\View; 
+
+
 class AdminController extends Controller
 {
     private $service;
@@ -23,10 +26,10 @@ class AdminController extends Controller
     {
         try {
             $users = $this->service->allMember();
-            dd($users);
-            return view('/admin/users', ['users' => $users]);
+            return view('/admin/users', compact('users'));
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
+            report($e);
+            return View::make('error')->with('message', $e->getMessage());
+               }
     }
 }

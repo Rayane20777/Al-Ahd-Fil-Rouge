@@ -55,9 +55,6 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 ///////////////////////////////////////////////////////////////////////
 
 
-Route::get('/admin/users', function () {
-    return view('/admin/users');
-})->name('admin.users');
 
 
 Route::get('/admin/doctors', function () {
@@ -196,6 +193,6 @@ Route::controller(MemberParamedicalServiceController::class)->group(function () 
 
 
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin/users/index', 'index')->name('admin_users.index');
+    Route::get('/admin/index', 'index')->name('admin_users.index');
 
 });
