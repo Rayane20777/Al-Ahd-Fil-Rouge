@@ -21,7 +21,11 @@ class SessionController extends Controller
     {
         try {
             $sessions = $this->service->allSession();
-            return view('/secretary/sessions', ['sessions' => $sessions]);
+            $doctors = $this->service->allDoctor();
+            $paramedicalServices = $this->service->allParamedicalService();
+
+            dd($sessions);
+            return view('/secretary/sessions', ['sessions','doctors','paramedicalServices' => $sessions,$doctors,$paramedicalServices]);
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

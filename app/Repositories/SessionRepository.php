@@ -6,6 +6,8 @@ namespace App\Repositories;
 use App\Repositories\Interfaces\SessionRepositoryInterface;
 use App\Models\ParamedicalSessionReservation;
 use App\Models\Session;
+use App\Models\Doctor;
+use App\Models\ParamedicalService;
 
 class SessionRepository implements SessionRepositoryInterface
 {
@@ -14,7 +16,17 @@ class SessionRepository implements SessionRepositoryInterface
 
     public function allSession()
     {
-        return Session::all();
+        return Session::with('doctors', 'paramedical_service')->get();    
+    }
+
+    public function allDoctor()
+    {
+        return Doctor::all();
+    }
+
+    public function allParamedicalService()
+    {
+        return ParamedicalService::all();
     }
 
     public function storeSession($data)

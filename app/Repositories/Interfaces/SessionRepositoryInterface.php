@@ -4,6 +4,8 @@ namespace App\Repositories\Interfaces;
 Interface SessionRepositoryInterface{
     
     public function allSession();
+    public function allDoctor();
+    public function allParamedicalService();
     public function storeSession($data);
     public function findSession($id);
     public function updateSession($data, $id); 

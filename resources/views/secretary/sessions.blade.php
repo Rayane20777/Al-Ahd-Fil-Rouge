@@ -218,15 +218,23 @@
                 <label for="professionName" class="block mb-2 font-bold text-gray-600">Ending Hour </label>
                 <input type="text" id="professionName" name="ending_hour" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
+            
             <div class="mb-5">
-                <label for="professionName" class="block mb-2 font-bold text-gray-600">Doctor</label>
-                <input type="text" id="professionName" name="doctor_id" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
+                <label for="doctorName" class="block mb-2 font-bold text-gray-600">Select Paramedical Service</label>
+                <select id="doctorName" name="paramedical_service_id" class="border border-gray-300 shadow p-3 w-full rounded">
+                    @foreach($sessions as $session)
+                        <option value="{{ $session->paramedical_service->id }}">{{ $session->paramedical_service->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-5">
-                <label for="professionName" class="block mb-2 font-bold text-gray-600">Paramedical Service</label>
-                <input type="text" id="professionName" name="paramedical_service_id" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
+                <label for="doctorName" class="block mb-2 font-bold text-gray-600">Doctors</label>
+                <select id="doctorName" name="doctor_id" class="border border-gray-300 shadow p-3 w-full rounded">
+                    @foreach($sessions as $session)
+                        <option value="{{ $session->doctors->id }}">{{ $session->doctors->first_name }} {{ $session->doctors->last_name }}</option>
+                    @endforeach
+                </select>
             </div>
-
 
             <button type="submit" id="submitProfessionButton" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
         </form>

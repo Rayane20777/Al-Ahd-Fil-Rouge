@@ -23,6 +23,19 @@ class SessionService implements SessionServiceInterface
         return $this->repository->allSession();
 
     }
+
+    public function allDoctor()
+    {
+        return $this->repository->allDoctor();
+
+    }
+
+    public function allParamedicalService()
+    {
+        return $this->repository->allParamedicalService();
+
+    }
+
     public function storeSession($data)
     {
         return $this->repository->storeSession($data);
