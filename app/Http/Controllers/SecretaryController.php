@@ -26,7 +26,7 @@ class SecretaryController extends Controller
     {
         try {
             $users = $this->service->allMember();
-            return view('/decretary/users', compact('users'));
+            return view('/secretary/users', compact('users'));
         } catch (Exception $e) {
             report($e);
             return View::make('error')->with('message', $e->getMessage());

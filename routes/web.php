@@ -12,6 +12,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ParamedicalServiceController;
 use App\Http\Controllers\MemberParamedicalServiceController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SecretaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -194,5 +195,11 @@ Route::controller(MemberParamedicalServiceController::class)->group(function () 
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin/user/index', 'index')->name('admin_users.index');
+
+});
+
+
+Route::controller(SecretaryController::class)->group(function () {
+    Route::get('/secretary/user/index', 'index')->name('secretary_users.index');
 
 });
