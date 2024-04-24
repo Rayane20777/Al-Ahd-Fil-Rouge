@@ -21,6 +21,11 @@ class DoctorService implements DoctorServiceInterface
         return $this->repository->allDoctor();
     }
 
+    public function allProfession()
+    {
+        return $this->repository->allProfession();
+    }
+
     
     public function storeDoctor($data)
     {

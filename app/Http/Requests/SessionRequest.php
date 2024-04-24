@@ -25,8 +25,8 @@ class SessionRequest extends FormRequest
             "date" => "required",
             "departure_hour" => "required",
             "ending_hour" => "required",
+            "paramedical_service_id" => "required",
             "doctor_id" => "required",
-            "paramedical_service_id" => "required"
         ];
     }
 }

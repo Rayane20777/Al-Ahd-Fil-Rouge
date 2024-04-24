@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Repositories\Interfaces\DoctorRepositoryInterface;
 use App\Models\Doctor;
+use App\Models\Profession;
 
 class DoctorRepository implements DoctorRepositoryInterface
 {
@@ -13,7 +14,13 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     public function allDoctor()
     {
-        return Doctor::with('profession')->get();    }
+        return Doctor::with('profession')->get();    
+    }
+
+    public function allProfession()
+    {
+        return Profession::all();    
+    }
 
     public function storeDoctor($data)
     {

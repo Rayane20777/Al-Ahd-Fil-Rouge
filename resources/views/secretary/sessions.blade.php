@@ -159,31 +159,39 @@
                         <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
                             <thead>
                                 <tr>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Service</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Estimate</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Budget</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Status</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Date</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Departure Hour</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Ending Hour</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Doctor</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Paramedical Service</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($sessions as $session)
                                 <tr>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Create landing page</a>
+                                            <span class="text-[13px] font-medium text-gray-400">{{$session->date}}</span>
                                         </div>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">3 days</span>
+                                        <span class="text-[13px] font-medium text-gray-400">{{$session->departure_hour}}</span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">$56</span>
+                                        <span class="text-[13px] font-medium text-gray-400">{{$session->ending_hour}}</span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">In progress</span>
+                                        <span class="text-[13px] font-medium text-gray-400">{{$session->doctors->first_name}} {{$session->doctors->last_name}}</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">{{$session->paramedical_service->name}}</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <span class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Delete</span>
                                     </td>
                                 </tr>
-                                
+                                @endforeach
                         </table>
                        
                     </div>
@@ -222,16 +230,16 @@
             <div class="mb-5">
                 <label for="doctorName" class="block mb-2 font-bold text-gray-600">Select Paramedical Service</label>
                 <select id="doctorName" name="paramedical_service_id" class="border border-gray-300 shadow p-3 w-full rounded">
-                    @foreach($sessions as $session)
-                        <option value="{{ $session->paramedical_service->id }}">{{ $session->paramedical_service->name }}</option>
+                    @foreach($paramedicalServices as $service)
+                        <option value="{{ $service->id }}">{{ $service->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-5">
                 <label for="doctorName" class="block mb-2 font-bold text-gray-600">Doctors</label>
                 <select id="doctorName" name="doctor_id" class="border border-gray-300 shadow p-3 w-full rounded">
-                    @foreach($sessions as $session)
-                        <option value="{{ $session->doctors->id }}">{{ $session->doctors->first_name }} {{ $session->doctors->last_name }}</option>
+                    @foreach($doctors as $doctor)
+                        <option value="{{ $doctor->id }}">{{ $doctor->first_name }} {{ $doctor->last_name }}</option>
                     @endforeach
                 </select>
             </div>

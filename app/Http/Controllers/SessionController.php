@@ -23,9 +23,8 @@ class SessionController extends Controller
             $sessions = $this->service->allSession();
             $doctors = $this->service->allDoctor();
             $paramedicalServices = $this->service->allParamedicalService();
-
-            dd($sessions);
-            return view('/secretary/sessions', ['sessions','doctors','paramedicalServices' => $sessions,$doctors,$paramedicalServices]);
+            // return view('/secretary/sessions', array_merge(compact('doctors'), compact('sessions'), compact('paramedicalServices')));
+            return view('/secretary/sessions', compact('doctors','sessions','paramedicalServices'));
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

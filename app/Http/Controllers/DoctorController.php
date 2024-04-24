@@ -20,7 +20,8 @@ class DoctorController extends Controller
     {
         try {
             $doctors = $this->service->allDoctor();
-            return view('/admin/doctors', ['doctors' => $doctors]);
+            $professions = $this->service->allProfession();
+            return view('/admin/doctors', compact('doctors','professions'));
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('departure_hour');
             $table->string('ending_hour');
-            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->foreignId('paramedical_service_id')->constrained('paramedical_services')->onDelete('cascade');
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
