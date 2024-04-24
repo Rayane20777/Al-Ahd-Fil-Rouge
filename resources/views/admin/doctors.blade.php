@@ -207,26 +207,31 @@
         <form action="{{ route('doctors.store') }}" method="POST" class="mt-6">
             @csrf
             <div class="mb-5">
-                <label for="professionName" class="block mb-2 font-bold text-gray-600">Doctor First Name</label>
-                <input type="text" id="professionName" name="first_name" placeholder="Enter >doctor first name" class="border border-gray-300 shadow p-3 w-full rounded">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">First Name</label>
+                <input type="text" id="doctorAddress" name="first_name" placeholder="Enter address" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
             <div class="mb-5">
-                <label for="professionName" class="block mb-2 font-bold text-gray-600">Doctor Last Name</label>
-                <input type="text" id="professionName" name="last_name" placeholder="Enter doctor last name" class="border border-gray-300 shadow p-3 w-full rounded">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">Last Name</label>
+                <input type="text" id="doctorAddress" name="last_name" placeholder="Enter address" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
             <div class="mb-5">
-                <label for="professionName" class="block mb-2 font-bold text-gray-600">Address</label>
-                <input type="text" id="professionName" name="address" placeholder="Enter address" class="border border-gray-300 shadow p-3 w-full rounded">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">Address</label>
+                <input type="text" id="doctorAddress" name="address" placeholder="Enter address" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
             <div class="mb-5">
-                <label for="professionName" class="block mb-2 font-bold text-gray-600">Profession</label>
-                <input type="text" id="professionName" name="profession_id" placeholder="Enter profession" class="border border-gray-300 shadow p-3 w-full rounded">
+                <label for="doctorName" class="block mb-2 font-bold text-gray-600">Select Profession</label>
+                <select id="doctorName" name="profession_id" class="border border-gray-300 shadow p-3 w-full rounded">
+                    @foreach($doctors as $doctor)
+                        <option value="{{ $doctor->profession->id }}">{{ $doctor->profession->name }}</option>
+                    @endforeach
+                </select>
             </div>
-
+            <!-- Add other fields as needed -->
             <button type="submit" id="submitProfessionButton" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
         </form>
     </div>
 </div>
+
     </main>
     <!-- end: Main -->
 

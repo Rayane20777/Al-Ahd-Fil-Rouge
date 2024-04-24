@@ -13,8 +13,7 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     public function allDoctor()
     {
-        return Doctor::all();
-    }
+        return Doctor::with('profession')->get();    }
 
     public function storeDoctor($data)
     {

@@ -21,7 +21,6 @@ class SessionController extends Controller
     {
         try {
             $sessions = $this->service->allSession();
-            dd($sessions);
             return view('/secretary/sessions', ['sessions' => $sessions]);
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
