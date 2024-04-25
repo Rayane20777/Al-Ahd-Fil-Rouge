@@ -152,6 +152,7 @@ Route::controller(DoctorController::class)->group(function () {
 
 Route::controller(EventController::class)->group(function () {
     Route::get('/event/index', 'index')->name('events.index');
+    Route::get('/old_event/index', 'oldIndex')->name('old_events.index');
     Route::post('/event/store', 'store')->name('events.store');
     Route::post('/event/update/{id}', 'update');
     Route::post('/event/destroy/{id}', 'destroy');

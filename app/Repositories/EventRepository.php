@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Repositories\Interfaces\EventRepositoryInterface;
 use App\Models\Event;
+use Carbon\Carbon;
 
 class EventRepository implements EventRepositoryInterface
 {
@@ -13,7 +14,12 @@ class EventRepository implements EventRepositoryInterface
 
     public function allEvent()
     {
-        return Event::all();
+        return Event::whereDate('date', '>=', Carbon::now()->toDateString())->get();
+    }
+
+    public function allOldEvent()
+    {
+        return Event::whereDate('date', '<', Carbon::now()->toDateString())->get();
     }
 
     public function storeEvent($data)

@@ -73,7 +73,6 @@
                     </li>
                 </ul>
             </li>
-           
         </ul>
     </div>
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
@@ -150,27 +149,29 @@
             <div >
             <div class="w-full lg:max-w-full lg:flex mb-8">
     </div>
+    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
+                    <div class="flex justify-between mb-4 items-start">
+                        <div class="font-medium">Manage Old Events</div>
+                        <button id="addProfessionButton" class=" right-10 bg-blue-500 text-white py-3 px-6 rounded-md shadow-md hover:bg-blue-600 focus:outline-none">
+                         Add Event
+                         </button>                       
+                    </div>
+
     <div class="space-y-8">
+        @foreach ($oldEvents as $event)
     <div class="w-full lg:max-w-full lg:flex mb-8">
         <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/mountain.jpg')" title="Mountain">
         </div>
         <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div class="mb-8">
-                <p class="text-sm text-gray-600 flex items-center">
-                    <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-                    </svg>
-                    Members only
-                </p>
-                <div class="text-gray-900 font-bold text-xl mb-2">Best Mountain Trails 2020</div>
-                <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                
+                <div class="text-gray-900 font-bold text-xl mb-2">{{$event->name}}</div>
+                <p class="text-gray-700 text-base">{{$event->description}}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <img class="w-10 h-10 rounded-full mr-4" src="/ben.png" alt="Avatar">
                     <div class="text-sm">
-                        <p class="text-gray-900 leading-none">John Smith</p>
-                        <p class="text-gray-600">Aug 18</p>
+                        <p class="text-gray-600">{{$event->date}}</p>
                     </div>
                 </div>
                 <div class="flex">
@@ -180,73 +181,39 @@
             </div>
         </div>
     </div>
+        @endforeach
+    
 
-    <div class="w-full lg:max-w-full lg:flex mb-8">
-        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/mountain.jpg')" title="Mountain">
-        </div>
-        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8">
-                <p class="text-sm text-gray-600 flex items-center">
-                    <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-                    </svg>
-                    Members only
-                </p>
-                <div class="text-gray-900 font-bold text-xl mb-2">Best Mountain Trails 2020</div>
-                <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-            </div>
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img class="w-10 h-10 rounded-full mr-4" src="/ben.png" alt="Avatar">
-                    <div class="text-sm">
-                        <p class="text-gray-900 leading-none">John Smith</p>
-                        <p class="text-gray-600">Aug 18</p>
-                    </div>
-                </div>
-                <div class="flex">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Edit</button>
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="w-full lg:max-w-full lg:flex mb-8">
-        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/mountain.jpg')" title="Mountain">
+
         </div>
-        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8">
-                <p class="text-sm text-gray-600 flex items-center">
-                    <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-                    </svg>
-                    Members only
-                </p>
-                <div class="text-gray-900 font-bold text-xl mb-2">Best Mountain Trails 2020</div>
-                <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+
+        <div id="addProfessionForm" class="hidden fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-10 rounded-lg shadow-md md:w-3/4 mx-auto lg:w-1/2 relative">
+        <button id="closeFormButton" class="absolute top-2 right-2 p-2 text-gray-400 hover:text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <form action="{{ route('events.store') }}" method="POST" class="mt-6">
+            @csrf
+            <div class="mb-5">
+                <label for="professionName" class="block mb-2 font-bold text-gray-600">Event Name</label>
+                <input type="text" id="professionName" name="name" placeholder="Enter event name" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img class="w-10 h-10 rounded-full mr-4" src="/ben.png" alt="Avatar">
-                    <div class="text-sm">
-                        <p class="text-gray-900 leading-none">John Smith</p>
-                        <p class="text-gray-600">Aug 18</p>
-                    </div>
-                </div>
-                <div class="flex">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Edit</button>
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-                </div>
+            <div class="mb-5">
+                <label for="professionName" class="block mb-2 font-bold text-gray-600">Event Description</label>
+                <input type="text" id="professionName" name="description" placeholder="Enter event description" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
-        </div>
+            <div class="mb-5">
+                <label for="professionName" class="block mb-2 font-bold text-gray-600">Event Date</label>
+                <input type="date" id="professionName" name="date" placeholder="Enter event date" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+
+            <button type="submit" id="submitProfessionButton" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+        </form>
     </div>
 </div>
-
-
-
-
-
-        </div>
     </main>
     <!-- end: Main -->
 
@@ -371,7 +338,37 @@ function hidePopper(popperId) {
 
 
 
+// JavaScript to handle button click event and show the form
+const addProfessionButton = document.getElementById('addProfessionButton');
+    const addProfessionForm = document.getElementById('addProfessionForm');
+    const closeFormButton = document.getElementById('closeFormButton');
+    const formContainer = document.querySelector('.bg-white');
+    // Function to show the form
+    function showAddProfessionForm() {
+        addProfessionForm.classList.remove('hidden');
+    }
 
+    // Function to hide the form
+    function hideAddProfessionForm() {
+        addProfessionForm.classList.add('hidden');
+    }
+
+    // Event listener for the Add Profession button
+    addProfessionButton.addEventListener('click', showAddProfessionForm);
+
+    // Event listener for the Submit button inside the form
+
+
+
+    closeFormButton.addEventListener('click', function() {
+    formContainer.style.display = 'none'; 
+
+    
+});
+
+document.getElementById("closeFormButton").addEventListener("click", function() {
+        document.getElementById("addProfessionForm").classList.add("hidden");
+    });
     </script>
 </body>
 </html>

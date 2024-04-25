@@ -27,6 +27,16 @@ class EventController extends Controller
         }
     }
 
+    public function oldIndex()
+    {
+        try {
+            $oldEvents = $this->service->allOldEvent();
+            return view('/admin/old_events', ['oldEvents' => $oldEvents]);
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
     public function store(EventRequest $request)
     {
         $data = $request->validated();

@@ -21,6 +21,13 @@ class EventService implements EventServiceInterface
     {
         return $this->repository->allEvent();
     }
+
+
+    public function allOldEvent()
+    {
+        return $this->repository->allOldEvent();
+    }
+    
     public function storeEvent($data)
     {
         return $this->repository->storeEvent($data);
