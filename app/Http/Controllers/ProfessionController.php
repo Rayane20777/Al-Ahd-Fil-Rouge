@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Interfaces\ProfessionServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfessionRequest;
+use Illuminate\Support\Facades\View; 
 use Exception;
 
 class ProfessionController extends Controller
@@ -23,7 +24,7 @@ class ProfessionController extends Controller
             $professions = $this->service->allProfession();
             return view('/admin/professions', ['professions' => $professions]);
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -35,7 +36,7 @@ class ProfessionController extends Controller
             $this->service->storeProfession($data);
             return redirect()->route('professions.index')->with('success', 'Profession created successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -45,7 +46,7 @@ class ProfessionController extends Controller
             $this->service->updateProfession($request->all(), $id);
             return redirect()->route('professions.index')->with('success', 'Profession updated successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -55,7 +56,7 @@ class ProfessionController extends Controller
             $this->service->destroyProfession($id);
             return redirect()->route('professions.index')->with('success', 'Profession deleted successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 }

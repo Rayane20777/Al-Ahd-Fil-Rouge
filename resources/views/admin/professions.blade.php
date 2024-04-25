@@ -173,7 +173,11 @@
                                    
                                     <td class="py-2 px-4 border-b border-b-gray-50">
                                         <span class="inline-block p-1 rounded bg-blue-500/10 text-blue-500 font-medium text-[12px] leading-none">Edit</span>
-                                        <span class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Delete</span>
+                                        <form action="{{ route('professions.destroy', $profession->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Delete</button>
+                                        </form>                                     
                                     </td>
                                 </tr>
                                 @endforeach

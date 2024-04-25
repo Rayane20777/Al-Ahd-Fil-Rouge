@@ -138,7 +138,7 @@ Route::controller(ProfessionController::class)->group(function () {
     Route::get('/profession/index', 'index')->name('professions.index');
     Route::post('/profession/store', 'store')->name('professions.store');
     Route::post('/profession/update/{id}', 'update');
-    Route::post('/profession/destroy/{id}', 'destroy');
+    Route::delete('/profession/destroy/{id}', 'destroy')->name('professions.destroy');
 });
 
 
@@ -146,8 +146,7 @@ Route::controller(DoctorController::class)->group(function () {
     Route::get('/doctor/index', 'index')->name('doctors.index');
     Route::post('/doctor/store', 'store')->name('doctors.store');
     Route::post('/doctor/update/{id}', 'update');
-    Route::post('/doctor/destroy/{id}', 'destroy');
-});
+    Route::delete('/destroy/{id}', [DoctorController::class, 'destroy'])->name('doctors.destroy');});
 
 
 Route::controller(EventController::class)->group(function () {
@@ -155,14 +154,14 @@ Route::controller(EventController::class)->group(function () {
     Route::get('/old_event/index', 'oldIndex')->name('old_events.index');
     Route::post('/event/store', 'store')->name('events.store');
     Route::post('/event/update/{id}', 'update');
-    Route::post('/event/destroy/{id}', 'destroy');
+    Route::delete('/event/destroy/{id}', 'destroy')->name('events.destroy');
 });
 
 Route::controller(AppointmentController::class)->group(function () {
     Route::get('/appointment/index', 'index')->name('appointments.index');
     Route::post('/appointment/store', 'store')->name('appointments.store');
     Route::post('/appointment/update/{id}', 'update');
-    Route::post('/appointment/destroy/{id}', 'destroy');
+    Route::post('/appointment/destroy/{id}', 'destroy')->name('appointments.destroy');
     Route::post('/appointment/make/{id}', 'makeAppointment');
     Route::post('/appointment/approve/{id}', 'approveAppointment');
     Route::post('/appointment/deny/{id}', 'denyAppointment');
@@ -173,7 +172,7 @@ Route::controller(ParamedicalServiceController::class)->group(function () {
     Route::get('/paramedical_service/index', 'index')->name('paramedical_services.index');
     Route::post('/paramedical_service/store', 'store')->name('paramedical_services.store');
     Route::post('/paramedical_service/update/{id}', 'update');
-    Route::post('/paramedical_service/destroy/{id}', 'destroy');
+    Route::delete('/paramedical_service/destroy/{id}', 'destroy')->name('paramedical_services.destroy');
 });
 
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('disorder');
             $table->enum('status', ['pending','member','banned'])->default('pending');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

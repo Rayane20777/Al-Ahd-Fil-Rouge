@@ -7,6 +7,7 @@ use App\Services\Interfaces\ParamedicalServiceServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\ParamedicalServiceRequest;
 use Exception;
+use Illuminate\Support\Facades\View; 
 
 class ParamedicalServiceController extends Controller
 {
@@ -24,7 +25,7 @@ class ParamedicalServiceController extends Controller
 
             return view('/admin/paramedical_services', ['paramedicalServices' => $paramedicalServices]);
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -36,7 +37,7 @@ class ParamedicalServiceController extends Controller
             $this->service->storeParamedicalService($data);
             return redirect()->route('paramedical_services.index')->with('success', 'Paramedical service created successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -46,7 +47,7 @@ class ParamedicalServiceController extends Controller
             $this->service->updateParamedicalService($request->all(), $id);
             return redirect()->route('paramedical_services.index')->with('success', 'Paramedical service updated successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -56,7 +57,7 @@ class ParamedicalServiceController extends Controller
             $this->service->destroyParamedicalService($id);
             return redirect()->route('paramedical_services.index')->with('success', 'Paramedical service deleted successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 }

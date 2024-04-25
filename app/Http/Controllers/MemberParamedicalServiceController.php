@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\MemberParamedicalServiceRequest;
 use App\Services\Interfaces\MemberParamedicalServiceServiceInterface;
+use Illuminate\Support\Facades\View; 
 use Exception;
 
 class MemberParamedicalServiceController extends Controller
@@ -23,7 +24,7 @@ class MemberParamedicalServiceController extends Controller
             $memberParamedicalServices = $this->service->allMemberParamedicalService();
             return view('/secretary/users', ['memberParamedicalServices' => $memberParamedicalServices]);
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -35,7 +36,7 @@ class MemberParamedicalServiceController extends Controller
             $this->service->storeMemberParamedicalServices($data);
             return redirect()->back()->with('success', 'Member paramedical services assigned successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 }
