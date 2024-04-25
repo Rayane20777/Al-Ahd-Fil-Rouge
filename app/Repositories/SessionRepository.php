@@ -67,19 +67,19 @@ class SessionRepository implements SessionRepositoryInterface
         );
     }
 
-    // public function approveSession($id)
-    // {
-    //     $Session = SessionReservation::find($id);
-    //     $Session->status = 'approved';
-    //     $Session->save();
+    public function approveSession($id)
+    {
+        $Session = ParamedicalSessionReservation::find($id);
+        $Session->status = 'approved';
+        $Session->save();
         
-    // }
+    }
 
-    // public function denySession($id)
-    // {
-    //     $Session = SessionReservation::find($id);
-    //     $Session->status = 'denied';
-    //     $Session->save();
+    public function denySession($id)
+    {
+        $Session = ParamedicalSessionReservation::find($id);
+        $Session->status = 'denied';
+        $Session->save();
         
-    // }
+    }
 }

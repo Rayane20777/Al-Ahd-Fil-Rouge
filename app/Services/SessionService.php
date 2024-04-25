@@ -65,17 +65,17 @@ class SessionService implements SessionServiceInterface
 
     }
      
-    // public function approveSession($id){
+    public function approveSession($id){
 
-    //     $this->repository->approveSession($id);
+        $this->repository->approveSession($id);
 
-    // }
+    }
 
-    // public function denySession($id){
+    public function denySession($id){
         
-    //     $this->repository->denySession($id);
+        $this->repository->denySession($id);
 
-    // }
+    }
     
 
 }

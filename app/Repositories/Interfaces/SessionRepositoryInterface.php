@@ -11,7 +11,7 @@ Interface SessionRepositoryInterface{
     public function updateSession($data, $id); 
     public function destroySession($id);
     public function makeSession($id,$member_id);
-    // public function approveSession($id);
-    // public function denySession($id);
+    public function approveSession($id);
+    public function denySession($id);
 }
 

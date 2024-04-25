@@ -13,6 +13,6 @@ interface SessionServiceInterface
     public function updateSession($data, $id); 
     public function destroySession($id);
     public function makeSession($id);
-    // public function approveSession($id);
-    // public function denySession($id);
+    public function approveSession($id);
+    public function denySession($id);
 }
