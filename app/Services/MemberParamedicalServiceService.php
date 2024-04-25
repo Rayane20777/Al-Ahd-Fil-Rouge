@@ -24,8 +24,8 @@ class MemberParamedicalServiceService implements MemberParamedicalServiceService
         $services = $data['paramedical_service_ids'];
         $member = $data['member_id'];
 
-        foreach ($services as $item) {
-            return $this->repository->storeMemberParamedicalService($item, $member);
+        foreach ($services as  $item ) {
+            $this->repository->storeMemberParamedicalService($item, $member);
         }
     }
 

@@ -26,8 +26,8 @@ class SecretaryController extends Controller
     {
         try {
             $users = $this->service->allMember();
-            $paramedicalService = $this->service->allParamedicalService();
-            return view('/secretary/users', compact('users','paramedicalService'));
+            $paramedicalServices = $this->service->allParamedicalService();
+            return view('/secretary/users', compact('users','paramedicalServices'));
         } catch (Exception $e) {
             report($e);
             return View::make('error')->with('message', $e->getMessage());

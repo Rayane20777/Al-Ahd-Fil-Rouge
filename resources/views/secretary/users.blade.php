@@ -172,7 +172,7 @@
                                 @foreach ($users as $member)
                                 <tr>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
+                                        <div class="flex items-center gap-2">
                                             <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
                                             <span class="text-[13px] font-medium text-gray-400">{{$member->user->first_name}} {{$member->user->last_name}}</span>
                                         </div>
@@ -196,7 +196,7 @@
                                         <span class="text-[13px] font-medium text-gray-400">{{$member->status}}</span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-blue-500/10 text-blue-500 font-medium text-[12px] leading-none">Assign service</span>
+                                        <button class="inline-block p-1 rounded bg-blue-500/10 text-blue-500 font-medium text-[12px] leading-none" id="addProfessionButton" onclick="showAddProfessionForm(event)" data-id="{{$member->id}}">Assign service</button>
                                         <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Approve</span>
                                     </td>
                                 </tr>
@@ -214,6 +214,32 @@
 
 
         </div>
+
+        <div id="addProfessionForm" class="hidden fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-10 rounded-lg shadow-md md:w-3/4 mx-auto lg:w-1/2 relative">
+        <button id="closeFormButton" class="absolute top-2 right-2 p-2 text-gray-400 hover:text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <form action="{{ route('member_paramedical_services.store') }}" method="POST" class="mt-6">
+            @csrf
+            
+            <input name="member_id" type="hidden" id="member_id" >
+            <div class="mb-5">
+            <label for="paramedicalServices" class="block mb-2 font-bold text-gray-600">Select Paramedical Services</label>
+            <select id="paramedicalServices" name="paramedical_service_ids[]" multiple class="border border-gray-300 shadow p-3 w-full rounded">
+             @foreach($paramedicalServices as $service)
+            <option value="{{ $service->id }}">{{ $service->name }}</option>
+            @endforeach
+            </select>
+            </div>
+          
+
+            <button type="submit" id="submitProfessionButton" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+        </form>
+    </div>
+</div>
     </main>
     <!-- end: Main -->
 
@@ -335,6 +361,44 @@ function hidePopper(popperId) {
     });
 }
 // end: Popper
+
+
+
+
+const addProfessionButton = document.getElementById('addProfessionButton');
+const memberIdInput = document.getElementById('member_id');
+    const addProfessionForm = document.getElementById('addProfessionForm');
+    const closeFormButton = document.getElementById('closeFormButton');
+    const formContainer = document.querySelector('.bg-white');
+
+    function showAddProfessionForm(event) {
+        
+        addProfessionForm.classList.remove('hidden');
+        let id = event.target.dataset.id;
+        memberIdInput.value = id;
+        console.log(id);
+    }
+
+    function hideAddProfessionForm() {
+        addProfessionForm.classList.add('hidden');
+    }
+
+    // addProfessionButton.addEventListener('click', showAddProfessionForm);
+
+
+
+
+    closeFormButton.addEventListener('click', function() {
+    formContainer.style.display = 'none'; 
+
+    
+});
+
+        document.getElementById("closeFormButton").addEventListener("click", function() {
+        document.getElementById("addProfessionForm").classList.add("hidden");
+    });
+
+    
 
 
 

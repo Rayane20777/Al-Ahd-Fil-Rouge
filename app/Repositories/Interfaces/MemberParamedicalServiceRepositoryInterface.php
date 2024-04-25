@@ -5,5 +5,5 @@ namespace App\Repositories\Interfaces;
 Interface MemberParamedicalServiceRepositoryInterface
 {
     public function allMemberParamedicalService();
-    public function storeMemberParamedicalService($item, $member);
+    public function storeMemberParamedicalService(array $item, $member);
 }
