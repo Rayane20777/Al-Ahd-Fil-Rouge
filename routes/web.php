@@ -202,5 +202,7 @@ Route::controller(AdminController::class)->group(function () {
 
 Route::controller(SecretaryController::class)->group(function () {
     Route::get('/secretary/user/index', 'index')->name('secretary_users.index');
+    Route::get('/secretary/appointment/reservation', 'appReservation')->name('secretary_appointment_reservations.index');
+    Route::get('/secretary/session/reservation', 'sessReservation')->name('secretary_session_reservations.index');
 
 });

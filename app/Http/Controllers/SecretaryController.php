@@ -32,4 +32,26 @@ class SecretaryController extends Controller
             return View::make('error')->with('message', $e->getMessage());
                }
     }
+
+    public function appReservation()
+    {
+        try {
+            $appoitmentReservations = $this->service->allAppReservation();
+            return view('/secretary/appointment_reservations', compact('appoitmentReservations'));
+        } catch (Exception $e) {
+            report($e);
+            return View::make('error')->with('message', $e->getMessage());
+               }
+    }
+
+    public function sessReservation()
+    {
+        try {
+            $sessionReservations = $this->service->allSessReservation();
+            return view('/secretary/reserved_sessions', compact('sessionReservations'));
+        } catch (Exception $e) {
+            report($e);
+            return View::make('error')->with('message', $e->getMessage());
+               }
+    }
 }

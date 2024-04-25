@@ -21,6 +21,6 @@ class ParamedicalSessionReservation extends Model
     }
 
     public function member(): BelongsTo {
-        return $this->belongsTo(Member::class,'menbers_paramedical_services','member_id','paramedical_service_id');
+        return $this->belongsTo(Member::class);
     }
 }

@@ -21,4 +21,14 @@ class SecretaryService implements SecretaryServiceInterface
     {
         return $this->repository->allMember();
     }
+
+    public function allAppReservation()
+    {
+        return $this->repository->allAppReservation();
+    }
+
+    public function allSessReservation()
+    {
+        return $this->repository->allSessReservation();
+    }
 }
