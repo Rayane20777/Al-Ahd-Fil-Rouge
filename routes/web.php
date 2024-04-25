@@ -161,7 +161,7 @@ Route::controller(AppointmentController::class)->group(function () {
     Route::get('/appointment/index', 'index')->name('appointments.index');
     Route::post('/appointment/store', 'store')->name('appointments.store');
     Route::post('/appointment/update/{id}', 'update');
-    Route::post('/appointment/destroy/{id}', 'destroy')->name('appointments.destroy');
+    Route::delete('/appointment/destroy/{id}', 'destroy')->name('appointments.destroy');
     Route::post('/appointment/make/{id}', 'makeAppointment');
     Route::post('/appointment/approve/{id}', 'approveAppointment');
     Route::post('/appointment/deny/{id}', 'denyAppointment');
@@ -180,7 +180,7 @@ Route::controller(SessionController::class)->group(function () {
     Route::get('/session/index', 'index')->name('sessions.index');
     Route::post('/session/store', 'store')->name('sessions.store');
     Route::post('/session/update/{id}', 'update');
-    Route::post('/session/destroy/{id}', 'destroy');
+    Route::delete('/session/destroy/{id}', 'destroy')->name('sessions.destroy');
     Route::post('/session/make/{id}', 'makeSession');
 });
 

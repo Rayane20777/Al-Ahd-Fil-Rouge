@@ -188,7 +188,11 @@
                                         <span class="text-[13px] font-medium text-gray-400">{{$session->paramedical_service->name}}</span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Delete</span>
+                                        <form action="{{ route('sessions.destroy', $session->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Delete</button>
+                                        </form> 
                                     </td>
                                 </tr>
                                 @endforeach

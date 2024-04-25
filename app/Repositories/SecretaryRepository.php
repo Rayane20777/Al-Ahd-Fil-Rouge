@@ -7,6 +7,7 @@ use App\Repositories\Interfaces\SecretaryRepositoryInterface;
 use App\Models\Member;
 use App\Models\AppointmentReservation;
 use App\Models\ParamedicalSessionReservation;
+use App\Models\ParamedicalService;
 
 class SecretaryRepository implements SecretaryRepositoryInterface
 {
@@ -30,6 +31,13 @@ class SecretaryRepository implements SecretaryRepositoryInterface
     public function allSessReservation()
     {
         return ParamedicalSessionReservation::with('member.user','session.doctors.profession','session.paramedical_service')->get();
+    }
+
+
+
+    public function allParamedicalService()
+    {
+        return ParamedicalService::all();
     }
     
 }

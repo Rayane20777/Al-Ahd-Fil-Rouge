@@ -31,4 +31,9 @@ class SecretaryService implements SecretaryServiceInterface
     {
         return $this->repository->allSessReservation();
     }
+
+    public function allParamedicalService()
+    {
+        return $this->repository->allParamedicalService();
+    }
 }
