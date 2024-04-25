@@ -182,6 +182,9 @@ Route::controller(SessionController::class)->group(function () {
     Route::post('/session/update/{id}', 'update');
     Route::delete('/session/destroy/{id}', 'destroy')->name('sessions.destroy');
     Route::post('/session/make/{id}', 'makeSession');
+    Route::post('/session/approve/{id}', 'approveSession')->name('secretary_session_reservations.approve');
+    Route::post('/session/deny/{id}', 'denySession')->name('secretary_session_reservations.deny');
+
 });
 
 
