@@ -224,11 +224,11 @@
             </div>
             <div class="mb-5">
                 <label for="professionName" class="block mb-2 font-bold text-gray-600">Departure Houre Name</label>
-                <input type="text" id="professionName" name="departure_hour" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
+                <input type="time" id="professionName" name="departure_hour" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
             <div class="mb-5">
                 <label for="professionName" class="block mb-2 font-bold text-gray-600">Ending Hour </label>
-                <input type="text" id="professionName" name="ending_hour" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
+                <input type="time" id="professionName" name="ending_hour" placeholder="Enter profession name" class="border border-gray-300 shadow p-3 w-full rounded">
             </div>
             
             <div class="mb-5">

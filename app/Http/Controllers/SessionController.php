@@ -75,7 +75,7 @@ class SessionController extends Controller
     public function approveSession(Request $request , $id){
         try {
             $this->service->approveSession($id);
-            return redirect()->route('sessions.index')->with('success', 'Session reserved successfully');
+            return redirect()->route('secretary_session_reservations.index')->with('success', 'Session reserved successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -84,7 +84,7 @@ class SessionController extends Controller
     public function denySession(Request $request , $id){
         try {
             $this->service->denySession($id);
-            return redirect()->route('sessions.index')->with('success', 'Session reserved successfully');
+            return redirect()->route('secretary_session_reservations.index')->with('success', 'Session reserved successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
