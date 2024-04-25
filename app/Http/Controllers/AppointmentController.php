@@ -70,7 +70,7 @@ class AppointmentController extends Controller
         
         try {
             $this->service->makeAppointment($id);
-            return redirect()->route('appointments.member.index')->with('success', 'Appointment reserved successfully');
+            return redirect()->route('secretary_appointment_reservations.index')->with('success', 'Appointment updated successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -79,7 +79,7 @@ class AppointmentController extends Controller
     public function approveAppointment(Request $request , $id){
         try {
             $this->service->approveAppointment($id);
-            return redirect()->route('appointments.index')->with('success', 'Appointment approved successfully');
+            return redirect()->route('secretary_appointment_reservations.index')->with('success', 'Appointment updated successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -88,7 +88,7 @@ class AppointmentController extends Controller
     public function denyAppointment(Request $request , $id){
         try {
             $this->service->denyAppointment($id);
-            return redirect()->route('appointments.index')->with('success', 'Appointment denied successfully');
+            return redirect()->route('secretary_appointment_reservations.index')->with('success', 'Appointment updated successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

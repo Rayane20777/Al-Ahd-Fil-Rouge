@@ -183,9 +183,15 @@
                                         <span class="text-[13px] font-medium text-gray-400">{{$appoitmentReservation->member->date_of_birth}}</span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Approve</span>
-                                        <span class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Deny</span>
-                                    </td>
+                                    <form action="{{ route('appointments.approve', $appoitmentReservation->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Approve</button>
+                                    </form> 
+                                    <form action="{{ route('appointments.deny', $appoitmentReservation->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Deny</button>
+                                    </form>                                     
+                                </td>
                                 </tr>
                                 @endforeach
                         </table>

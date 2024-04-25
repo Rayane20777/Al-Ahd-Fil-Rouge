@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('paramedical_session_reservations', function (Blueprint $table) {
             $table->id();
+            $table->enum('status', ['pending','approved','denied']);
             $table->foreignId('session_id')->constrained('sessions')->cascadeOnDelete();
             $table->foreignId('member_id')->constrained('members')->cascadeOnDelete();
             $table->softDeletes();
