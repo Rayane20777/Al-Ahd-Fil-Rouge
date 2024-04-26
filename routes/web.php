@@ -44,7 +44,7 @@ Route::get('/events', function () {
 
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('member/profile');
 });
 
 Route::get('/register', [RegisterController::class, 'index']);
