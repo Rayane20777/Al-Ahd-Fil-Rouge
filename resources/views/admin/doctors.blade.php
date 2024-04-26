@@ -167,29 +167,36 @@
                             </thead>
                             <tbody>
                                 @foreach ($doctors as $doctor)
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{$doctor->first_name}} {{$doctor->last_name}}</a>
-                                        </div>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">{{$doctor->address}}</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">{{$doctor->profession->name}}</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-blue-500/10 text-blue-500 font-medium text-[12px] leading-none">Edit</span>
-                                        <form action="{{ route('doctors.destroy', $doctor->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Delete</button>
-                                        </form>                                    
-                                </td>
-                                </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 border-b border-b-gray-50">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
+                                                <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ $doctor->first_name }} {{ $doctor->last_name }}</a>
+                                            </div>
+                                        </td>
+                                        <td class="py-2 px-4 border-b border-b-gray-50">
+                                            <span class="text-[13px] font-medium text-gray-400">{{ $doctor->address }}</span>
+                                        </td>
+                                        <td class="py-2 px-4 border-b border-b-gray-50">
+                                            @if($doctor->profession)
+                                                <span class="text-[13px] font-medium text-gray-400">{{ $doctor->profession->name }}</span>
+                                            @else
+                                                <span class="text-[13px] font-medium text-gray-400">No profession assigned</span>
+                                            @endif
+                                        </td>
+                                        <td class="py-2 px-4 border-b border-b-gray-50">
+                                            <span class="inline-block p-1 rounded bg-blue-500/10 text-blue-500 font-medium text-[12px] leading-none">Edit</span>
+                                            <form action="{{ route('doctors.destroy', $doctor->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @endforeach
+                            </tbody>
+
+
                         </table>
                        
                     </div>
