@@ -150,67 +150,42 @@
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
                     <div class="flex justify-between mb-4 items-start">
                         <div class="font-medium">Manage orders</div>
-                       
+                        <button id="addProfessionButton" class=" right-10 bg-blue-500 text-white py-3 px-6 rounded-md shadow-md hover:bg-blue-600 focus:outline-none">
+                         Add Secretary
+                         </button>
                     </div>
                    
                     <div class="overflow-x-auto">
                         <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
                             <thead>
                                 <tr>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Parent Name</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Email</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Address</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Child Name</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Date Of Birth</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Disorder</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Status</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Name</th>
+                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Address</th>
                                     <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($users->first())
-                                    @foreach ($users as $member)
-                                    <tr>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <div class="flex items-center">
-                                                <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                                <span class="text-[13px] font-medium text-gray-400">{{$member->user->first_name}} {{$member->user->last_name}}</span>
-                                            </div>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <span class="text-[13px] font-medium text-gray-400">{{$member->user->email}}</span>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <span class="text-[13px] font-medium text-gray-400">{{$member->user->address}}</span>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <span class="text-[13px] font-medium text-gray-400">{{$member->child_first_name}} {{$member->child_last_name}}</span>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <span class="text-[13px] font-medium text-gray-400">{{$member->date_of_birth}}</span>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <span class="text-[13px] font-medium text-gray-400">{{$member->disorder}}</span>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <span class="text-[13px] font-medium text-gray-400">{{$member->status}}</span>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <!-- <span class="inline-block p-1 rounded bg-blue-500/10 text-blue-500 font-medium text-[12px] leading-none">Assign service</span>
-                                            <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Approve</span> -->
-                                            <form action="{{ route('admin_users.ban', $member->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Ban</button>
-                                            </form>                                     
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td>No data found</td>
-                                    </tr>
-                                @endif
+                                @foreach ($secretaries as $secretary)
+                                <tr>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
+                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{$secretary->user->first_name}} {{$secretary->user->last_name}}</a>
+                                        </div>
+                                    </td>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">{{$secretary->user->address}}</span>
+                                    </td>
+                                    
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <form action="{{ route('admin_secretaries.ban', $secretary->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-block p-1 rounded bg-red-500/10 text-red-500 font-medium text-[12px] leading-none">Ban</button>
+                                        </form>                                    
+                                </td>
+                                </tr>
+                                @endforeach
                         </table>
                        
                     </div>
@@ -223,6 +198,43 @@
 
 
         </div>
+
+        <div id="addProfessionForm" class="hidden fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white p-10 rounded-lg shadow-md md:w-3/4 mx-auto lg:w-1/2 relative">
+        <button id="closeFormButton" class="absolute top-2 right-2 p-2 text-gray-400 hover:text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <form action="{{route('register')}}" method="POST" class="mt-6">
+            @csrf
+            <input type="hidden" name="role" value="secretary">
+            <div class="mb-5">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">First Name</label>
+                <input type="text" id="doctorAddress" name="first_name" placeholder="Enter address" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+            <div class="mb-5">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">Last Name</label>
+                <input type="text" id="doctorAddress" name="last_name" placeholder="Enter address" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+            <div class="mb-5">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">Email</label>
+                <input type="email" id="doctorAddress" name="email" placeholder="Enter email" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+            <div class="mb-5">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">Address</label>
+                <input type="text" id="doctorAddress" name="address" placeholder="Enter an address" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+            <div class="mb-5">
+                <label for="doctorAddress" class="block mb-2 font-bold text-gray-600">Paasworsd</label>
+                <input type="password" id="doctorAddress" name="password" placeholder="Enter a password" class="border border-gray-300 shadow p-3 w-full rounded">
+            </div>
+            
+            <button type="submit" id="submitProfessionButton" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
+        </form>
+    </div>
+</div>
+
     </main>
     <!-- end: Main -->
 
@@ -345,7 +357,37 @@ function hidePopper(popperId) {
 }
 // end: Popper
 
+// JavaScript to handle button click event and show the form
+const addProfessionButton = document.getElementById('addProfessionButton');
+    const addProfessionForm = document.getElementById('addProfessionForm');
+    const closeFormButton = document.getElementById('closeFormButton');
+    const formContainer = document.querySelector('.bg-white');
+    // Function to show the form
+    function showAddProfessionForm() {
+        addProfessionForm.classList.remove('hidden');
+    }
 
+    // Function to hide the form
+    function hideAddProfessionForm() {
+        addProfessionForm.classList.add('hidden');
+    }
+
+    // Event listener for the Add Profession button
+    addProfessionButton.addEventListener('click', showAddProfessionForm);
+
+    // Event listener for the Submit button inside the form
+
+
+
+    closeFormButton.addEventListener('click', function() {
+    formContainer.style.display = 'none'; 
+
+    
+});
+
+document.getElementById("closeFormButton").addEventListener("click", function() {
+        document.getElementById("addProfessionForm").classList.add("hidden");
+    });
 
 
     </script>

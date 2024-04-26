@@ -21,4 +21,19 @@ class AdminService implements AdminServiceInterface
     {
         return $this->repository->allMember();
     }
+
+    public function allSecretary()
+    {
+        return $this->repository->allSecretary();
+    }
+
+    public function userBan($id)
+    {
+        return $this->repository->userBan($id);
+    }
+
+    public function secretaryBan($id)
+    {
+        return $this->repository->secretaryBan($id);
+    }
 }

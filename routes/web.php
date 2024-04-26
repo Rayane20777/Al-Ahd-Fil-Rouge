@@ -197,6 +197,10 @@ Route::controller(MemberParamedicalServiceController::class)->group(function () 
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin/user/index', 'index')->name('admin_users.index');
+    Route::get('/admin/secretary/index', 'secretaryIndex')->name('admin_secretaries.index');
+    Route::delete('/admin/user/ban/{id}', 'userBan')->name('admin_users.ban');
+    Route::delete('/admin/secretary/ban/{id}', 'secretaryBan')->name('admin_secretaries.ban');
+
 
 });
 

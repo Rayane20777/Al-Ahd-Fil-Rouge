@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Secretary extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,OneToOneTrait;
 
     protected $fillable = [
         "user_id",

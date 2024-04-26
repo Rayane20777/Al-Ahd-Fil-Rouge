@@ -18,6 +18,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+
         $attributes = $request->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
@@ -27,12 +28,16 @@ class RegisterController extends Controller
         ]);
 
 
+
+
         $user = User::create($attributes);
 
         if ($request->input('role') === 'secretary') {
+
             $secretary = new Secretary();
             $secretary->user_id = $user->id;
             $secretary->save();
+
         } elseif ($request->input('role') === 'member') {
             $request->validate([
                 'child_first_name' => 'required|max:255',

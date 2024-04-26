@@ -18,7 +18,7 @@
 				<!-- Col -->
                 <div class="w-full h-auto bg-gray-400 dark:bg-gray-800 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg" 
                 style="background-image: url('https://png.pngtree.com/png-clipart/20220704/original/pngtree-autism-child-disorder-care-health-png-image_8311213.png'); background-size: 540px 600px; background-position: left;"></div>
-<!-- Col -->
+                    <!-- Col -->
 				<div class="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-lg lg:rounded-l-none">
 					<h3 class="py-4 text-2xl text-center text-gray-800 dark:text-white">Create an Account!</h3>
 					<form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded" id="registerForm" action="{{route('register')}}" method="POST"  enctype="multipart/form-data">
