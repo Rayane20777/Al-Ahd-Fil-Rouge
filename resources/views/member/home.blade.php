@@ -23,12 +23,9 @@
     </ul>
     
     <div class="hidden  md:block">
+
         <button class="bg-indigo-700 py-2 px-2 rounded-sm text-[#e7e5e4] font-bold">
-            Login
-        </button>
-        <button class="bg-indigo-700 py-2 px-2 rounded-sm text-[#e7e5e4] font-bold">
-            Sign up
-        </button>
+Logout        </button>
     </div>
     <div class="md:hidden">
         <a class="text-4xl burger-menu" href="#">&#8801;</a>

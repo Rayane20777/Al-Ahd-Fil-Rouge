@@ -35,9 +35,8 @@ class SessionController extends Controller
     {
         try {
             $sessions = $this->service->memberSession();
-            dd($sessions);
             // return view('/secretary/sessions', array_merge(compact('doctors'), compact('sessions'), compact('paramedicalServices')));
-            return view('/member/sessions', compact('doctors','sessions','paramedicalServices'));
+            return view('/member/sessions', compact('sessions'));
         } catch (Exception $e) {
             return View::make('error')->with('message', $e->getMessage());
         }

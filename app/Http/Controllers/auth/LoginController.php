@@ -6,7 +6,6 @@ use App\Models\Admin;
 use App\Models\Member;
 use App\Models\Secretary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 
@@ -32,18 +31,18 @@ class LoginController extends Controller
         session()->regenerate();
 
         if (sizeof(Member::where('user_id', auth()->id())->get()) > 0){
-            auth()->user()->role = 'passenger';
-            return redirect()->route('member.home');
+            // auth()->user()->role = 'member';
+            return redirect()->route('member_sessions.index');
         } elseif (sizeof(Secretary::where('user_id', auth()->id())->get()) > 0){
-            auth()->user()->role = 'driver';
+            // auth()->user()->role = 'secretary';
             return redirect()->route('secretary.users');
         } elseif (sizeof(Admin::where('user_id', auth()->id())->get()) > 0) {
-            auth()->user()->role = 'admin';
+            // auth()->user()->role = 'admin';
             return redirect()->route('admin.users');
         }
     }
 
-    public function destroy(){
+    public function logout(){
         auth()->logout();
 
         return redirect('/');

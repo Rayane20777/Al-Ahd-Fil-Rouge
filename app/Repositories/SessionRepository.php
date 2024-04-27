@@ -21,7 +21,7 @@ class SessionRepository implements SessionRepositoryInterface
     public function memberSession()
     {
         $user = auth()->user();
-        dd($user->member()->first()->paramedical_service()->with('session')->get()->pluck('session')->flatten());
+        return $user->member()->first()->paramedical_service()->with('session')->get()->pluck('session')->flatten();
    
     }
 

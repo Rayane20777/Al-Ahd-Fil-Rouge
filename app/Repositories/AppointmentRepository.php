@@ -56,6 +56,7 @@ class AppointmentRepository implements AppointmentRepositoryInterface
     public function approveAppointment($id)
     {
         $appointment = AppointmentReservation::find($id);
+        $appointmentEmail = AppointmentReservation::find($id)->with('appointment')->get();
         $appointment->status = 'approved';
         $appointment->save();
         

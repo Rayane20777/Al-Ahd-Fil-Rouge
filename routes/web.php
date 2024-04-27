@@ -29,10 +29,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/login', function () {
-    return view('login');
+Route::get('/member/home', function () {
+    return view('/member/home');
 });
+
+
 
 
 
@@ -51,83 +52,10 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 ///////////////////////////////////////////////////////////////////////
-
-
-
-
-Route::get('/admin/doctors', function () {
-    return view('/admin/doctors');
-});
-
-
-Route::get('/admin/events', function () {
-    return view('/admin/events');
-});
-
-
-Route::get('/admin/old_events', function () {
-    return view('/admin/old_events');
-});
-
-
-Route::get('/admin/professions', function () {
-    return view('/admin/professions');
-});
-
-
-Route::get('/admin/paramedical_services', function () {
-    return view('/admin/paramedical_services');
-});
-
-
-///////////////////////////////////////////////////////////////////////
-
-
-Route::get('/secretary/users', function () {
-    return view('/secretary/users');
-})->name('secretary.users');
-
-Route::get('/secretary/doctors', function () {
-    return view('/secretary/doctors');
-});
-
-
-Route::get('/secretary/appointments', function () {
-    return view('/secretary/appointments');
-});
-
-
-Route::get('/secretary/appointment_reservations', function () {
-    return view('/secretary/appointment_reservations');
-});
-
-
-Route::get('/secretary/sessions', function () {
-    return view('/secretary/sessions');
-});
-
-
-Route::get('/secretary/reserved_sessions', function () {
-    return view('/secretary/reserved_sessions');
-});
-
-
-//////////////////////////////////////////////////////////////////////////////
-
-Route::get('/member/home', function () {
-    return view('/member/home');
-})->name('member.home');
-
-Route::get('/member/sessions', function () {
-    return view('/member/sessions');
-});
-
-Route::get('/member/appointments', function () {
-    return view('/member/appointments');
-})->name('appointments.member.index');
 
 
 
@@ -159,6 +87,7 @@ Route::controller(EventController::class)->group(function () {
 
 Route::controller(AppointmentController::class)->group(function () {
     Route::get('/appointment/index', 'index')->name('appointments.index');
+    Route::get('/appointment/member/index', 'memberIndex')->name('member_appointments.index');
     Route::post('/appointment/store', 'store')->name('appointments.store');
     Route::post('/appointment/update/{id}', 'update');
     Route::delete('/appointment/destroy/{id}', 'destroy')->name('appointments.destroy');
