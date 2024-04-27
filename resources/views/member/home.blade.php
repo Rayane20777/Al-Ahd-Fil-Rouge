@@ -8,44 +8,58 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>welcome</title>
+    
 </head>
-<body class=""> <!-- Change background to [#e7e5e4] here -->
+<body class=""> 
   <div class="bg-950 h-screen w-full">
   
   <!-- navbar goes here  -->
-  <nav class="bg-indigo-200 h-20 w-full flex justify-between px-3 md:px-20 items-center">
-    <div class="text-2xl text-indigo-600 capitalize font-bold ">Studo skills </div>
+  <nav class="bg-indigo-200 h-20 w-full flex justify-between px-3 md:px-10 items-center">
+    <div class="text-2xl text-indigo-600 capitalize font-bold ">Al Ahd Fundation </div>
     <ul class="md:flex sm:gap-10 gap-4 hidden">
         <li class="mx-[10px] cursor-pointer">Home</li>
-        <li class="mx-[10px] cursor-pointer">About Us </li>
-        <li class="mx-[10px] cursor-pointer">Contact</li>
+        <li class="mx-[10px] cursor-pointer">Appointment </li>
+        <li class="mx-[10px] cursor-pointer">Sessions</li>
     </ul>
     
     <div class="hidden  md:block">
         <button class="bg-indigo-700 py-2 px-2 rounded-sm text-[#e7e5e4] font-bold">
-            Login/Signup
+            Login
+        </button>
+        <button class="bg-indigo-700 py-2 px-2 rounded-sm text-[#e7e5e4] font-bold">
+            Sign up
         </button>
     </div>
     <div class="md:hidden">
-        <a class="text-4xl " href="#">&#8801;</a>
+        <a class="text-4xl burger-menu" href="#">&#8801;</a>
     </div>
         
     
   </nav>
 
-  <!-- navbar ended here  -->
+  <!-- navbar  -->
 
+  <!-- burger menu -->
+  <div id="burgerMenu" class="md:hidden hidden bg-indigo-200 w-full py-4 px-8">
+    <ul class="text-center">
+      <li class="py-2"><a href="#" class="block">Home</a></li>
+      <li class="py-2"><a href="#" class="block">Appointment</a></li>
+      <li class="py-2"><a href="#" class="block">Sessions</a></li>
+      <li class="py-2"><a href="#" class="block">Login</a></li>
+      <li class="py-2"><a href="#" class="block">Register</a></li>
+    </ul>
+  </div>
+  <!-- burger menu  -->
 
-
-  <!-- image section starts here  -->
+  <!-- image   -->
 
  <header class="w-full  h-auto">
-  <img class="w-full hidden md:block mt-2" src="https://www.abautisme.fr/upload/slide/01.jpg" loading="lazy" alt="">
+  <img class="w-full hidden md:block " src="https://www.abautisme.fr/upload/slide/01.jpg" loading="lazy" alt="">
  </header>
 
-<!-- image section ends here  -->
+<!-- image   -->
 
-<!-- our student section  -->
+<!-- Info -->
 
 
 <div class="h-auto w-full flex flex-wrap flex-col items-center text-center p-10 bg-[#e7e5e4] ">
@@ -74,9 +88,9 @@
        </div>
 </div>
 
-<!-- our student section ends here  -->
+<!-- Info -->
 
-<!-- product section starts here  -->
+<!--Info -->
     <div class="h-auto w-full flex flex-wrap flex-col items-center text-center p-10 bg-[#f5f5f5] ">
        <div>
         <p class="capitalize text-indigo-700 text-2xl md:text-4xl text-center">Our Doctors</p>
@@ -107,7 +121,7 @@
               
         </div>
     </div>
-   <!-- product section ends here  -->
+   <!-- Info  -->
 
 
 
@@ -145,7 +159,7 @@
              </div>
          </div>
 
- <!-- footer closed here  -->
+ <!-- footer  -->
 
 
 
@@ -155,5 +169,16 @@
    </footer>
 
   </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const burgerMenu = document.querySelector('.burger-menu');
+      const menu = document.getElementById('burgerMenu');
+      
+      burgerMenu.addEventListener('click', function () {
+        menu.classList.toggle('hidden');
+      });
+    });
+  </script>
 </body>
 </html>

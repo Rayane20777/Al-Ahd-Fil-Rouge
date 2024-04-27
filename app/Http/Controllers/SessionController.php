@@ -7,6 +7,7 @@ use App\Services\Interfaces\SessionServiceInterface;
 use App\Http\Requests\SessionRequest;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\View; 
 
 class SessionController extends Controller
 {
@@ -27,6 +28,18 @@ class SessionController extends Controller
             return view('/secretary/sessions', compact('doctors','sessions','paramedicalServices'));
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function memberIndex()
+    {
+        try {
+            $sessions = $this->service->memberSession();
+            dd($sessions);
+            // return view('/secretary/sessions', array_merge(compact('doctors'), compact('sessions'), compact('paramedicalServices')));
+            return view('/member/sessions', compact('doctors','sessions','paramedicalServices'));
+        } catch (Exception $e) {
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 

@@ -33,6 +33,15 @@ class AppointmentController extends Controller
         }
     }
 
+    public function memberIndex(){
+        try {
+            $appointments = $this->service->allAppointment();
+            return view('/member/appointments', ['appointments' => $appointments]);
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
     public function store(AppointmentRequest $request)
     {
         

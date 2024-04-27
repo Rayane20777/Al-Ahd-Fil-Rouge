@@ -178,6 +178,7 @@ Route::controller(ParamedicalServiceController::class)->group(function () {
 
 Route::controller(SessionController::class)->group(function () {
     Route::get('/session/index', 'index')->name('sessions.index');
+    Route::get('/member/session/index', 'memberIndex')->name('member_sessions.index');
     Route::post('/session/store', 'store')->name('sessions.store');
     Route::post('/session/update/{id}', 'update');
     Route::delete('/session/destroy/{id}', 'destroy')->name('sessions.destroy');

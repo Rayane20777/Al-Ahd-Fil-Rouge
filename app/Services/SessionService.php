@@ -36,6 +36,12 @@ class SessionService implements SessionServiceInterface
 
     }
 
+    public function memberSession()
+    {
+        return $this->repository->memberSession();
+
+    }
+
     public function storeSession($data)
     {
         return $this->repository->storeSession($data);

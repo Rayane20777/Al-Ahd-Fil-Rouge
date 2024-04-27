@@ -18,6 +18,12 @@ class SessionRepository implements SessionRepositoryInterface
     {
         return Session::with('doctors', 'paramedical_service')->get();    
     }
+    public function memberSession()
+    {
+        $user = auth()->user();
+        dd($user->member()->first()->paramedical_service()->with('session')->get()->pluck('session')->flatten());
+   
+    }
 
     public function allDoctor()
     {
