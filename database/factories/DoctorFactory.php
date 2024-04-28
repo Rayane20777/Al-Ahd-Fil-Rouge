@@ -19,8 +19,10 @@ class DoctorFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id" => User::query()->inRandomOrder()->first()?->id ?? 
-            User::factory(),
+            'first_name' => fake()->name(),
+            'last_name' => fake()->name(),
+            'address' => fake()->address(),
+           
             "profession_id" => Profession::query()->inRandomOrder()->first()?->id ?? 
             Profession::factory(),
         ];

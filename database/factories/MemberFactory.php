@@ -18,11 +18,10 @@ class MemberFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => fake()->name(),
-            'last_name' => fake()->name(),
+            'child_first_name' => fake()->name(),
+            'child_last_name' => fake()->name(),
             'date_of_birth' => fake()->date(),
             'disorder' => fake()->name(),
-            'description' => fake()->name(),
             'status' => "pending",
             "user_id" => User::query()->inRandomOrder()->first()?->id ?? 
             User::factory(),

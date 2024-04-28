@@ -31,13 +31,13 @@ class LoginController extends Controller
         session()->regenerate();
 
         if (sizeof(Member::where('user_id', auth()->id())->get()) > 0){
-            // auth()->user()->role = 'member';
+            auth()->user()->role = 'member';
             return redirect()->route('member_sessions.index');
         } elseif (sizeof(Secretary::where('user_id', auth()->id())->get()) > 0){
-            // auth()->user()->role = 'secretary';
+            auth()->user()->role = 'secretary';
             return redirect()->route('secretary.users');
         } elseif (sizeof(Admin::where('user_id', auth()->id())->get()) > 0) {
-            // auth()->user()->role = 'admin';
+            auth()->user()->role = 'admin';
             return redirect()->route('admin.users');
         }
     }

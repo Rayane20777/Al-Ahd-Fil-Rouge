@@ -25,6 +25,7 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:8|max:255',
             'address' => 'required|min:8|max:255',
+            'role' => 'required',
         ]);
 
 
