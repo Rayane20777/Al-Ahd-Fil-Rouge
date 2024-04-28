@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\Interfaces\AppointmentServiceInterface;
 use App\Http\Requests\AppointmentRequest;
 use Exception;
+use Illuminate\Support\Facades\View; 
 
 
 class AppointmentController extends Controller
@@ -79,9 +80,9 @@ class AppointmentController extends Controller
         
         try {
             $this->service->makeAppointment($id);
-            return redirect()->route('secretary_appointment_reservations.index')->with('success', 'Appointment updated successfully');
+            return redirect()->route('/')->with('success', 'Appointment updated successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 

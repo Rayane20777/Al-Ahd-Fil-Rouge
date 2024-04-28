@@ -19,8 +19,8 @@
     <div class="text-2xl text-indigo-600 capitalize font-bold ">Al Ahd Fundation </div>
     <ul class="md:flex sm:gap-10 gap-4 hidden">
         <li class="mx-[10px] cursor-pointer">Home</li>
-        <li class="mx-[10px] cursor-pointer">Appointment </li>
         <li class="mx-[10px] cursor-pointer">Sessions</li>
+        <li class="mx-[10px] cursor-pointer">Events</li>
     </ul>
     
     <div class="hidden  md:block">
@@ -42,10 +42,9 @@
   <div id="burgerMenu" class="md:hidden hidden bg-indigo-200 w-full py-4 px-8">
     <ul class="text-center">
       <li class="py-2"><a href="#" class="block">Home</a></li>
-      <li class="py-2"><a href="#" class="block">Appointment</a></li>
       <li class="py-2"><a href="#" class="block">Sessions</a></li>
-      <li class="py-2"><a href="#" class="block">Login</a></li>
-      <li class="py-2"><a href="#" class="block">Register</a></li>
+      <li class="py-2"><a href="#" class="block">Events</a></li>
+      <li class="py-2"><a href="#" class="block">Logout</a></li>
     </ul>
   </div>
   <!-- burger menu  -->
@@ -108,21 +107,38 @@
   </div>
 </div>
 
-<div class="bg-[#e7e5e4] ">
+<div class="bg-[#e7e5e4] py-8 ">
 
 
 <!-- session -->
-<div class="container  mx-auto w-5/6 ">
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 ">
-  <div class="my-12 card m-2 cursor-pointer border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
+<div class="container  mx-auto w-5/6 h-80  ">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 ">
+    @foreach ($sessions as $session)
     <!--  -->
+    <div class="m card m-2 cursor-pointer border border-gray-400 rounded-lg hover:shadow-md ">
     <div class="m-3">
-      <h2 class="text-lg mb-2">Title
-     <span class="text-sm text-teal-800 font-mono bg-teal-100 inline rounded-full px-2 align-top float-right animate-pulse">Tag</span></h2>
-    <p class="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds.</p>
+        <h2 class="text-lg mb-2">Paramedical Service
+        </h2>
+        <p class="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Doctor: [Enter Doctor Name]<br>
+        Profession: Doctor<br>
+        Date: {{$session->date}}<br></p>
+        <div class="flex justify-between">
+    <p class="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Time: {{$session->departure_hour}}-{{$session->ending_hour}}</p>
+    <form action="{{ route('session_reservation.make', $session->id) }}" method="POST">
+      @csrf 
+      <button class="text-sm text-teal-800 font-mono bg-teal-100 inline rounded-full px-2 align-top float-right animate-pulse">Reserve</button>
+      </form>
     </div>
-  </div>
+  
+    </div>
+</div>
+
+
+
+
+
   <!--  -->
+  @endforeach
 </div>
 </div>
 

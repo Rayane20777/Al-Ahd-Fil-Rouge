@@ -13,6 +13,7 @@ use App\Http\Controllers\ParamedicalServiceController;
 use App\Http\Controllers\MemberParamedicalServiceController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SecretaryController;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,15 +45,14 @@ Route::get('/events', function () {
 });
 
 
-Route::get('/profile', function () {
-    return view('member/profile');
-});
+
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/profile', [MemberController::class, 'profile'])->name('profile');
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -91,7 +91,7 @@ Route::controller(AppointmentController::class)->group(function () {
     Route::post('/appointment/store', 'store')->name('appointments.store');
     Route::post('/appointment/update/{id}', 'update');
     Route::delete('/appointment/destroy/{id}', 'destroy')->name('appointments.destroy');
-    Route::post('/appointment/make/{id}', 'makeAppointment');
+    Route::post('/appointment/make/{id}', 'makeAppointment')->name('appointment_reservation.make');
     Route::post('/appointment/approve/{id}', 'approveAppointment')->name('appointments.approve');
     Route::post('/appointment/deny/{id}', 'denyAppointment')->name('appointments.deny');
 });
@@ -111,7 +111,7 @@ Route::controller(SessionController::class)->group(function () {
     Route::post('/session/store', 'store')->name('sessions.store');
     Route::post('/session/update/{id}', 'update');
     Route::delete('/session/destroy/{id}', 'destroy')->name('sessions.destroy');
-    Route::post('/session/make/{id}', 'makeSession');
+    Route::post('/session/make/{id}', 'makeSession')->name('session_reservation.make');
     Route::post('/session/approve/{id}', 'approveSession')->name('secretary_session_reservations.approve');
     Route::post('/session/deny/{id}', 'denySession')->name('secretary_session_reservations.deny');
 

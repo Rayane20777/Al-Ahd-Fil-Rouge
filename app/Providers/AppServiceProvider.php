@@ -17,6 +17,8 @@ use App\Repositories\Interfaces\ParamedicalServiceRepositoryInterface;
 use App\Services\Interfaces\ParamedicalServiceServiceInterface;
 use App\Repositories\Interfaces\MemberParamedicalServiceRepositoryInterface;
 use App\Services\Interfaces\MemberParamedicalServiceServiceInterface;
+use App\Repositories\Interfaces\MemberRepositoryInterface;
+use App\Services\Interfaces\MemberServiceInterface;
 use App\Repositories\Interfaces\AdminRepositoryInterface;
 use App\Services\Interfaces\AdminServiceInterface;
 use App\Repositories\AdminRepository;
@@ -39,6 +41,8 @@ use App\Repositories\ParamedicalServiceRepository;
 use App\Services\ParamedicalServiceService;
 use App\Repositories\MemberParamedicalServiceRepository;
 use App\Services\MemberParamedicalServiceService;
+use App\Repositories\MemberRepository;
+use App\Services\MemberService;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 
@@ -67,6 +71,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(MemberParamedicalServiceServiceInterface::class, MemberParamedicalServiceService::class); 
         $this->app->bind(DoctorServiceInterface::class, DoctorService::class); 
         $this->app->bind(DoctorRepositoryInterface::class, DoctorRepository::class);
+        $this->app->bind(MemberServiceInterface::class, MemberService::class); 
+        $this->app->bind(MemberRepositoryInterface::class, MemberRepository::class);
 
      }
 

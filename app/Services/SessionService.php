@@ -63,9 +63,8 @@ class SessionService implements SessionServiceInterface
     public function makeSession($id)
     {
 
-        $user = JWTAuth::user();
 
-        $member_id = $user->member()->first()->id;
+        $member_id = auth()->user()->member()->first()->id;
 
         return $this->repository->makeSession($id, $member_id);
 

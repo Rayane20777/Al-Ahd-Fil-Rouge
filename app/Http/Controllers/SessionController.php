@@ -78,7 +78,7 @@ class SessionController extends Controller
     {
         try {
             $this->service->makeSession($id);
-            return redirect()->route('sessions.index')->with('success', 'Session reserved successfully');
+            return redirect()->route('member_sessions.index')->with('success', 'Session reserved successfully');
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

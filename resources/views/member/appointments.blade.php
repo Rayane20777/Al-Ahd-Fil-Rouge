@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://cdn.tailwindcss.com"></script>
-        
-        <title>Appointment</title>
-        
-    </head>
-    <body class=""> 
-        <div class="bg-950 h-screen w-full">
-            
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Sessions</title>
+    
+</head>
+<body class=""> 
+  <div class="bg-950  w-full">
+  
   <!-- navbar goes here  -->
   <nav class="bg-indigo-200 h-20 w-full flex justify-between px-3 md:px-10 items-center">
     <div class="text-2xl text-indigo-600 capitalize font-bold ">Al Ahd Fundation </div>
     <ul class="md:flex sm:gap-10 gap-4 hidden">
         <li class="mx-[10px] cursor-pointer">Home</li>
-        <li class="mx-[10px] cursor-pointer">Appointment </li>
-        <li class="mx-[10px] cursor-pointer">Sessions</li>
+        <li class="mx-[10px] cursor-pointer">Appointment</li>
+        <li class="mx-[10px] cursor-pointer">Events</li>
     </ul>
     
     <div class="hidden  md:block">
+
         <button class="bg-indigo-700 py-2 px-2 rounded-sm text-[#e7e5e4] font-bold">
-            Login
-        </button>
-        <button class="bg-indigo-700 py-2 px-2 rounded-sm text-[#e7e5e4] font-bold">
-            Sign up
-        </button>
+    Logout 
+       </button>
     </div>
     <div class="md:hidden">
         <a class="text-4xl burger-menu" href="#">&#8801;</a>
@@ -45,9 +43,8 @@
     <ul class="text-center">
       <li class="py-2"><a href="#" class="block">Home</a></li>
       <li class="py-2"><a href="#" class="block">Appointment</a></li>
-      <li class="py-2"><a href="#" class="block">Sessions</a></li>
-      <li class="py-2"><a href="#" class="block">Login</a></li>
-      <li class="py-2"><a href="#" class="block">Register</a></li>
+      <li class="py-2"><a href="#" class="block">Events</a></li>
+      <li class="py-2"><a href="#" class="block">Logout</a></li>
     </ul>
   </div>
   <!-- burger menu  -->
@@ -59,6 +56,82 @@
  </header>
 
 <!-- image   -->
+
+
+
+
+
+
+
+  
+
+
+<div class="bg-[#e7e5e4]  p-6 rounded-xl shadow-lg">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      
+
+     
+
+      <div class="flex flex-col">
+        <label for="date" class="font-medium text-sm text-stone-600">Date</label>
+        <input
+          type="date"
+          id="date"
+          class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-300 focus:ring focus:ring-orange-200 focus:ring-opacity-50"
+        >
+      </div>
+
+      
+
+      <div class="grid md:flex   space-x-4  my-3">
+      
+      
+      <button class="px-4 py-2 rounded-lg text-orange-50 bg-orange-400 hover:bg-orange-500 font-bold text-white shadow-lg shadow-orange-200 transition ease-in-out duration-200 translate-10">
+        Search
+      </button> 
+    </div>
+</div>
+
+   
+  </div>
+</div>
+
+<div class="bg-[#e7e5e4] py-8 ">
+
+
+<!-- session -->
+<div class="container  mx-auto w-5/6  ">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 ">
+    @foreach ($appointments as $appointment)
+    <!--  -->
+    <div class="m card m-2 cursor-pointer border border-gray-400 rounded-lg hover:shadow-md ">
+    <div class="m-3">
+        <h2 class="text-lg mb-2">Date :{{$appointment->date}}
+        </h2>
+        <p class="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Time: {{$appointment->departure_hour}}-{{$appointment->ending_hour}}</p>
+       
+        <div class="flex justify-between">
+    <p class="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Click to take an appointment</p>
+    <form action="{{ route('appointment_reservation.make', $appointment->id) }}" method="POST">
+      @csrf 
+      <button class="text-sm text-teal-800 font-mono bg-teal-100 inline rounded-full px-2 align-top float-right animate-pulse">Book</button>
+      </form>
+    </div>
+  
+    </div>
+</div>
+
+
+
+
+
+  <!--  -->
+  @endforeach
+</div>
+</div>
+
+<!-- session -->
+</div>
 
 
 
