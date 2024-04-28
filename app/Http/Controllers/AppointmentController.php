@@ -42,6 +42,7 @@ class AppointmentController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+ 
 
     public function store(AppointmentRequest $request)
     {

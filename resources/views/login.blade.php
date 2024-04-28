@@ -46,7 +46,6 @@
                     <div class="mt-4">
                         <div class="flex justify-between">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-                            <a href="#" class="text-xs text-gray-500">Forget Password?</a>
                         </div>
                         <input id="password" name="password" type="password" required
                             class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none">

@@ -8,6 +8,7 @@ use App\Models\ParamedicalSessionReservation;
 use App\Models\Session;
 use App\Models\Doctor;
 use App\Models\ParamedicalService;
+use Illuminate\Support\Facades\DB;
 
 class SessionRepository implements SessionRepositoryInterface
 {
@@ -22,9 +23,52 @@ class SessionRepository implements SessionRepositoryInterface
     {
         $user = auth()->user();
         
-        return $user->member()->first()->paramedical_service()->with('session.doctors.profession','session.paramedical_service_reservation')
-        ->get()->pluck('session')->flatten();
-   
+        // return $user->member()->first()->paramedical_service()->with('session.doctors.profession','session.paramedical_service_reservation')
+        // ->get()->pluck('session')->flatten();
+
+        $results = DB::select("SELECT  e.id, e.date, e.departure_hour, e.ending_hour, f.status, d.name
+        FROM users a 
+        INNER JOIN members b 
+        ON b.user_id = a.id 
+        INNER JOIN menbers_paramedical_services c 
+        ON c.member_id = b.id
+        INNER JOIN paramedical_services d
+        ON c.paramedical_service_id = d.id
+        INNER JOIN sessions e
+        ON e.paramedical_service_id = d.id
+        LEFT JOIN paramedical_session_reservations f
+        ON f.session_id = e.id 
+        WHERE a.id = {$user->id}
+        AND (f.status = 'denied' OR f.status IS NULL)
+        ORDER BY e.date;");
+
+        // dd($results);
+
+        return $results;
+
+    }
+
+    public function filter($paramedical_service, $session){
+        $user = auth()->user();
+        $results = DB::select("SELECT  e.id, e.date, e.departure_hour, e.ending_hour, f.status
+        FROM users a 
+        INNER JOIN members b 
+        ON b.user_id = a.id 
+        INNER JOIN menbers_paramedical_services c 
+        ON c.member_id = b.id
+        INNER JOIN paramedical_services d
+        ON c.paramedical_service_id = d.id
+        INNER JOIN `sessions` e
+        ON e.paramedical_service_id = d.id
+        LEFT JOIN paramedical_session_reservations f
+        ON f.session_id = e.id 
+        WHERE a.id = {$user->id}
+        AND (f.status = 'denied' OR f.status IS NULL)
+        AND (d.name = '{$paramedical_service}' AND e.date = '{$session}')
+        ORDER BY e.date DESC;");
+
+        // dd($results, $paramedical_service, $session);
+        return $results;
     }
 
     public function allDoctor()

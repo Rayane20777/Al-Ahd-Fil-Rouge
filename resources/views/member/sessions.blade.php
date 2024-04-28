@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,36 +71,38 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       
 
-     
+    <form action="{{ route('member.filter') }}" method="POST">
+    @csrf
 
-      <div class="flex flex-col">
+    <div class="flex flex-col">
         <label for="date" class="font-medium text-sm text-stone-600">Date</label>
         <input
-          type="date"
-          id="date"
-          class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-300 focus:ring focus:ring-orange-200 focus:ring-opacity-50"
+            type="date"
+            id="date"
+            name="date" 
+            class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-300 focus:ring focus:ring-orange-200 focus:ring-opacity-50"
         >
-      </div>
+    </div>
 
-      <div class="flex flex-col">
-        <label for="Paramedical Service" class="font-medium text-sm text-stone-600">Paramedical Service</label>
-
+    <div class="flex flex-col">
+        <label for="paramedical_service" class="font-medium text-sm text-stone-600">Paramedical Service</label>
         <select
-          id="status"
-          class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-300 focus:ring focus:ring-orange-200 focus:ring-opacity-50"
-        >
-          <option>Active</option>
-      
+            id="paramedical_service"
+            name="paramedical_service" 
+            class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-300 focus:ring focus:ring-orange-200 focus:ring-opacity-50">
+            @foreach ($sessions as $session)
+                <option value="{{ $session->name }}">{{ $session->name }}</option>
+            @endforeach
         </select>
-      </div>
-      
+    </div>
 
-      <div class="grid md:flex   space-x-4  my-3">
-      
-      
-      <button class="px-4 py-2 rounded-lg text-orange-50 bg-orange-400 hover:bg-orange-500 font-bold text-white shadow-lg shadow-orange-200 transition ease-in-out duration-200 translate-10">
-        Search
-      </button> 
+    <div class="grid md:flex space-x-4 my-3">
+        <button type="submit" class="px-4 py-2 rounded-lg text-orange-50 bg-orange-400 hover:bg-orange-500 font-bold text-white shadow-lg shadow-orange-200 transition ease-in-out duration-200 translate-10">
+            Search
+        </button> 
+    </div>
+</form>
+
     </div>
 </div>
 
@@ -111,7 +114,7 @@
 
 
 <!-- session -->
-<div class="container  mx-auto w-5/6 h-80  ">
+<div class="container  mx-auto w-5/6   ">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 ">
     @foreach ($sessions as $session)
     <!--  -->

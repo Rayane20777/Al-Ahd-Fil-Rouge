@@ -17,6 +17,8 @@ class AppointmentRepository implements AppointmentRepositoryInterface
         return Appointment::all();
     }
 
+
+
     public function storeAppointment($data)
     {
         return Appointment::create($data);

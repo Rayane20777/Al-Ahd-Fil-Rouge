@@ -35,7 +35,11 @@ class SessionService implements SessionServiceInterface
         return $this->repository->allParamedicalService();
 
     }
+    public function filter($paramedical_service,$session){
+        
+        return $this->repository->filter($paramedical_service,$session);
 
+    }
     public function memberSession()
     {
         return $this->repository->memberSession();

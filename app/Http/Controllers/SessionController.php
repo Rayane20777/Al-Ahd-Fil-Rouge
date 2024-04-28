@@ -40,6 +40,16 @@ class SessionController extends Controller
         } catch (Exception $e) {
             return View::make('error')->with('message', $e->getMessage());
         }
+    } 
+      public function filter(Request $request){
+        try {
+            $session = $request->input('date');
+            $paramedical_service = $request->input('paramedical_service');
+            $appointments = $this->service->filter($paramedical_service,$session);
+            return view('/member/appointments', ['appointments' => $appointments]);
+        } catch (Exception $e) {
+            return View::make('error')->with('message', $e->getMessage());
+        }
     }
 
     public function store(SessionRequest $request)
@@ -50,7 +60,7 @@ class SessionController extends Controller
             $this->service->storeSession($data);
             return redirect()->route('sessions.index')->with('success', 'Session created successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 
@@ -80,7 +90,7 @@ class SessionController extends Controller
             $this->service->makeSession($id);
             return redirect()->route('member_sessions.index')->with('success', 'Session reserved successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 

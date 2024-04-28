@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Services\Interfaces\EventServiceInterface;
 use Exception;
+use Illuminate\Support\Facades\View; 
 
 class EventController extends Controller
 {
@@ -45,7 +46,7 @@ class EventController extends Controller
             $this->service->storeEvent($data);
             return redirect()->route('events.index')->with('success', 'Event created successfully');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return View::make('error')->with('message', $e->getMessage());
         }
     }
 

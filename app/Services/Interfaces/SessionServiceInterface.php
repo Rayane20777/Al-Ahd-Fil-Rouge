@@ -8,6 +8,7 @@ interface SessionServiceInterface
     public function allSession();
     public function allDoctor();
     public function allParamedicalService();
+    public function filter($paramedical_service,$session);
     public function memberSession();
     public function storeSession($data);
     public function findSession($id);

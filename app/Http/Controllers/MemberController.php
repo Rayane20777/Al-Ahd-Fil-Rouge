@@ -29,4 +29,8 @@ class MemberController extends Controller
             return View::make('error')->with('message', $e->getMessage());
                }
     }
+
+    public function home(){
+        return view('/member/home');
+    }
 }

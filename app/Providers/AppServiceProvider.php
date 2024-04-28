@@ -81,11 +81,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define("admin", fn(User $user) => $user->hasRole('admin'));
-        Gate::define("doctor", fn(User $user) => $user->hasRole('doctor'));
-        Gate::define("member", fn(User $user) => $user->hasRole('admin'));
-        Gate::define("secretary", fn(User $user) => $user->hasRole('admin'));
+        // Gate::define("admin", fn(User $user) => $user->hasRole('admin'));
+        // Gate::define("doctor", fn(User $user) => $user->hasRole('doctor'));
+        // Gate::define("member", fn(User $user) => $user->hasRole('admin'));
+        // Gate::define("secretary", fn(User $user) => $user->hasRole('admin'));
 
+        Gate::define('admin', fn(User $user) => $user->role == 'admin');
+        Gate::define('secretary', fn(User $user) => $user->role == 'secretary');
+        // Gate::define('member', fn(User $user) => $user->role == 'member');
+        Gate::define('member_pending', fn(User $user) => $user->member()->first()->status == 'pending');
+        Gate::define('member_approved', fn(User $user) => $user->member()->first()->status == 'member');
     }
 
     

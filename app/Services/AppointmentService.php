@@ -21,6 +21,10 @@ class AppointmentService implements AppointmentServiceInterface
     {
         return $this->repository->allAppointment();
     }
+
+
+ 
+
     public function storeAppointment($data)
     {
         return $this->repository->storeAppointment($data);
